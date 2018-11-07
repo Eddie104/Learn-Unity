@@ -12,8 +12,12 @@ function Main()
 	spriteRenderer.sprite = Sprite.Create(hong, Rect(0, 0, hong.width, hong.height), Vector2(0.5, 0.5))
 
 	-- update事件监听
-	local updateHandler = UpdateBeat:CreateListener(update, self)
-	UpdateBeat:AddListener(updateHandler)
+	-- local updateHandler = UpdateBeat:CreateListener(update, self)
+	-- UpdateBeat:AddListener(updateHandler)
+
+	-- 动画测试
+	local npc = ab:LoadAsset('NPC_001')
+	GameObject.Instantiate(npc)
 end
 
 function update()

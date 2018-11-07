@@ -16,6 +16,9 @@ public class Client : LuaClient
         base.Init();
         // 让屏幕永远亮着
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+
+        Test();
     }
 
     protected override LuaFileUtils InitLoader()
@@ -33,5 +36,9 @@ public class Client : LuaClient
         luaState.AddSearchPath(Application.dataPath + "/lua");
 #endif
         base.LoadLuaFiles();
+    }
+
+    private void Test() {
+
     }
 }

@@ -160,6 +160,7 @@ public static class CustomSettings
         _GT(typeof(ResourceManager)),
         _GT(typeof(App)),
         _GT(typeof(Helper))
+        //_GT(typeof(Animator))
     };
 
     public static List<Type> dynamicList = new List<Type>()

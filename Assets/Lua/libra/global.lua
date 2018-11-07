@@ -6,6 +6,7 @@ Application        = UnityEngine.Application
 GameObject         = UnityEngine.GameObject
 SpriteRenderer     = UnityEngine.SpriteRenderer
 Sprite             = UnityEngine.Sprite
+Animator           = UnityEngine.Animator
 Rect               = UnityEngine.Rect
 Transform          = UnityEngine.Transform
 ParticleSystem     = UnityEngine.ParticleSystem
