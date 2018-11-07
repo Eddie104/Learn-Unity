@@ -4,7 +4,12 @@
 
 import os
 import requests
+from requests.adapters import HTTPAdapter
+import json
 from pyquery import PyQuery
+
+
+snippets_arr = [];
 
 
 def read_file(path):
@@ -14,7 +19,14 @@ def read_file(path):
     return txt
 
 
+def write_file(path, content):
+	f = open(path, 'w')
+	f.write(content)
+	f.close()
+
+
 def get(url):
+	print(url)
 	s = requests.Session()
 	s.mount('https://', HTTPAdapter(max_retries=10))
 	response = None
@@ -33,11 +45,90 @@ def get(url):
 		return None
 
 
+def create_snippet(class_name, key, val, type, sign):
+	if type == 'Properties':
+		title = '%s.%s' % (class_name, key)
+		prefix = title
+		body = key
+		description = 'return:%s des: %s' % (sign, val)
+	elif type in ['Public Methods', 'Static Methods']:
+		title = '%s.%s' % (class_name, key)
+		prefix = title
+		body = '%s($1)' % key if type == 'Public Methods' else title
+		description = '%s des: %s' % (sign, val)
+	elif type == 'Messages':
+		title = '%s.%s' % (class_name, key)
+		prefix = title
+		body = key
+		description = val
+
+	return '''
+	"%s": {
+		"prefix": "%s",
+		"body": [
+			"%s"
+		],
+		"description": "%s"
+	}
+''' % (title, prefix, body, description)
+
+
+def fetch_detail(url, class_name, key, type):
+	pq = get(url)
+	val = ''
+	for div in pq('div.subsection'):
+		div = PyQuery(div)
+		h2 = div.find('h2').text()
+		if h2 == 'Description':
+			val = div.find('p').text()
+			break
+	global snippets_arr
+	if type == 'Properties':
+		sign = pq('div.signature-CS').text().replace('public', '').replace(key, '').replace(';', '').strip()
+		snippets_arr.append(create_snippet(class_name, key, val, type, sign))
+	elif type in ['Public Methods', 'Static Methods']:
+		sign = pq('div.signature-CS').text()
+		snippets_arr.append(create_snippet(class_name, key, val, type, sign))
+	elif type == 'Messages':
+		sign = ''
+		snippets_arr.append(create_snippet(class_name, key, val, type, sign))
+
+def fetch_page(url, class_name):
+	pq = get(url)
+	for div in pq('div.subsection'):
+		div = PyQuery(div)
+		h2 = div.find('h2').text()
+		if h2 in ['Properties', 'Public Methods', 'Static Methods', 'Messages']:
+			for a in div.find('a'):
+				fetch_detail('https://docs.unity3d.com/ScriptReference/%s' % a.get('href'), class_name, a.text, h2)
+
+
+def do_data(data):
+	link = data.get('link', None)
+	if link and link != 'null':
+		fetch_page('https://docs.unity3d.com/ScriptReference/%s.html' % link, link)
+	children = data.get('children', None)
+	if children:
+		for child in children:
+			do_data(child)
+
+
 def main():
-    for parent, dir_name_arr, file_name_arr in os.walk('../Assets/Source/Generate/'):
-        for file_name in file_name_arr:
-            if file_name.endswith('.cs'):
-                pass
+	txt = get('https://docs.unity3d.com/ScriptReference/docdata/global_toc.js').html(
+	).replace('</t0>', '').replace('var toc = ', '')
+	json_data = json.loads(txt)
+	# print(json_data)
+	data_arr = json_data.get('children')[0].get('children')
+	for data in data_arr:
+		if data.get('title') == 'Classes':
+			data_arr = data.get('children')
+			break
+	for data in data_arr:
+		do_data(data)
+
+	txt = ','.join(snippets_arr)
+	write_file('lua.json', txt)
+
 
 if __name__ == '__main__':
     main()
