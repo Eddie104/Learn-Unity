@@ -7,12 +7,17 @@ public class NPC : MonoBehaviour
 
     int WalkingId = -1;
 
+    int Dir = 3;
+
+    //int DirId = -1;
+
     Animator animator;
 
     // Use this for initialization
     void Start()
     {
         WalkingId = Animator.StringToHash("Walking");
+        //DirId = Animator.StringToHash("Dir");
         animator = GetComponent<Animator>();
         animator.speed = 0.5f;
     }
@@ -22,8 +27,11 @@ public class NPC : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            Walking = !Walking;
-            animator.SetBool(WalkingId, Walking);
+            //Walking = !Walking;
+            //animator.SetBool(WalkingId, Walking);
+            Dir = Dir == 3 ? 7 : 3;
+            //animator.SetInteger(DirId, Dir);
+            animator.SetInteger("Dir", Dir);
         }
     }
 }
