@@ -46,7 +46,8 @@ def get(url):
 
 
 def create_snippet(class_name, key, val, type, sign):
-	if type == 'Properties':
+	val = val.replace('"', '\\"').split('\n')[0]
+	if type in ['Properties', 'Static Properties']:
 		title = '%s.%s' % (class_name, key)
 		prefix = title
 		body = key
@@ -69,8 +70,7 @@ def create_snippet(class_name, key, val, type, sign):
 			"%s"
 		],
 		"description": "%s"
-	}
-''' % (title, prefix, body, description)
+	}''' % (title, prefix, body, description)
 
 
 def fetch_detail(url, class_name, key, type):
@@ -83,7 +83,7 @@ def fetch_detail(url, class_name, key, type):
 			val = div.find('p').text()
 			break
 	global snippets_arr
-	if type == 'Properties':
+	if type in ['Properties', 'Static Properties']:
 		sign = pq('div.signature-CS').text().replace('public', '').replace(key, '').replace(';', '').strip()
 		snippets_arr.append(create_snippet(class_name, key, val, type, sign))
 	elif type in ['Public Methods', 'Static Methods']:
@@ -93,14 +93,18 @@ def fetch_detail(url, class_name, key, type):
 		sign = ''
 		snippets_arr.append(create_snippet(class_name, key, val, type, sign))
 
+
 def fetch_page(url, class_name):
 	pq = get(url)
 	for div in pq('div.subsection'):
 		div = PyQuery(div)
 		h2 = div.find('h2').text()
-		if h2 in ['Properties', 'Public Methods', 'Static Methods', 'Messages']:
+		if h2 in ['Properties', 'Static Properties', 'Public Methods', 'Static Methods', 'Messages']:
 			for a in div.find('a'):
 				fetch_detail('https://docs.unity3d.com/ScriptReference/%s' % a.get('href'), class_name, a.text, h2)
+			global snippets_arr
+			txt = ','.join(snippets_arr)
+			write_file('lua.json', txt)
 
 
 def do_data(data):
@@ -125,9 +129,6 @@ def main():
 			break
 	for data in data_arr:
 		do_data(data)
-
-	txt = ','.join(snippets_arr)
-	write_file('lua.json', txt)
 
 
 if __name__ == '__main__':

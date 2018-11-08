@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4090951689
+CRC: 3931622533
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 99bec1d2de03b339ce2e326b599a6c38
+    Hash: be6842c13d5100db0f5779944ecfd16a
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 9a660297894c2f1ce2ca156396ef3a55
+    Hash: 84efe8a70a27dc8f7efd484857bb4459
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -19,40 +19,11 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
-- Class: 74
-  Script: {instanceID: 0}
-- Class: 91
-  Script: {instanceID: 0}
-- Class: 95
-  Script: {instanceID: 0}
-- Class: 114
-  Script: {fileID: 11500000, guid: 43f2e599d3d5d46aebebe2cb45d8f17f, type: 3}
-- Class: 115
-  Script: {instanceID: 0}
 - Class: 212
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
 Assets:
-- Assets/Imgs/npc/001/npc_001_walk_3_4.png
-- Assets/Imgs/npc/001/npc_001_walk_7_1.png
-- Assets/Imgs/huang.png
-- Assets/Prefabs/NPC_001.prefab
-- Assets/Imgs/npc/001/npc_001_idle_7_5.png
-- Assets/Imgs/npc/001/npc_001_idle_7_4.png
-- Assets/Imgs/npc/001/npc_001_idle_3_5.png
-- Assets/Imgs/npc/001/npc_001_walk_7_3.png
-- Assets/Imgs/npc/001/npc_001_walk_7_2.png
-- Assets/Imgs/npc/001/npc_001_idle_7_3.png
-- Assets/Imgs/npc/001/npc_001_idle_7_1.png
-- Assets/Imgs/hong.png
-- Assets/Imgs/npc/001/npc_001_idle_3_4.png
-- Assets/Imgs/npc/001/npc_001_idle_3_2.png
-- Assets/Imgs/npc/001/npc_001_idle_3_1.png
-- Assets/Imgs/npc/001/npc_001_idle_3_3.png
-- Assets/Imgs/npc/001/npc_001_idle_7_2.png
-- Assets/Imgs/npc/001/npc_001_walk_3_1.png
-- Assets/Imgs/npc/001/npc_001_walk_3_2.png
-- Assets/Imgs/npc/001/npc_001_walk_3_3.png
-- Assets/Imgs/npc/001/npc_001_walk_7_4.png
+- Assets/Prefabs/Role.prefab
+- Assets/Imgs/Clothes/002/Clothes_002.png
 Dependencies: []
