@@ -1,0 +1,31 @@
+ManifestFileVersion: 0
+CRC: 564132875
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: be6842c13d5100db0f5779944ecfd16a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 84efe8a70a27dc8f7efd484857bb4459
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefabs/Role.prefab
+- Assets/Imgs/Clothes/001/Clothes_001.png
+- Assets/Imgs/Role/001/role_001.png
+- Assets/Imgs/Clothes/002/Clothes_002.png
+Dependencies: []

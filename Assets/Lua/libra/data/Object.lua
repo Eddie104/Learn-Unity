@@ -51,7 +51,7 @@ function Object:des(str)
 end
 
 function Object:dispose()
-	
+
 end
 
 return Object

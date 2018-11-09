@@ -7,6 +7,7 @@ using System.Collections.Generic;
 /// </summary>
 public class IllegalWordDetection
 {
+    /*
     /// <summary>
     /// 存了所有的长度大于1的敏感词汇
     /// </summary>
@@ -326,4 +327,5 @@ public class IllegalWordDetection
 
         return findResult;
     }
+    */
 }

@@ -315,11 +315,11 @@ public class ResourceManager : MonoBehaviour
     /// <summary>
     /// 载入素材
     /// </summary>
-    public T LoadAsset<T>(string abname, string assetname) where T : UnityEngine.Object
+    public T LoadAsset<T>(string abName, string assetName) where T : UnityEngine.Object
     {
-        abname = abname.ToLower();
-        AssetBundle bundle = LoadAssetBundle(abname);
-        return bundle.LoadAsset<T>(assetname);
+        abName = abName.ToLower();
+        AssetBundle bundle = LoadAssetBundle(abName);
+        return bundle.LoadAsset<T>(assetName);
     }
 
     public void LoadPrefab(string abName, string[] assetNames, LuaFunction func)
@@ -334,32 +334,39 @@ public class ResourceManager : MonoBehaviour
         if (func != null) func.Call((object)result.ToArray());
     }
 
+    public void LoadSpritesWithAsset(string abName, string assetName, LuaFunction func)
+    {
+        AssetBundle ab = LoadAssetBundle(abName);
+        Sprite[] result = ab.LoadAssetWithSubAssets<Sprite>(assetName);
+        if (func != null) func.Call((object)result);
+    }
+
     /// <summary>
     /// 载入AssetBundle
     /// </summary>
-    /// <param name="abname"></param>
+    /// <param name="abName"></param>
     /// <returns></returns>
-    public AssetBundle LoadAssetBundle(string abname)
+    public AssetBundle LoadAssetBundle(string abName)
     {
         //if (!abname.EndsWith(AppConst.ExtName))
         //{
         //    abname += AppConst.ExtName;
         //}
         AssetBundle bundle = null;
-        if (!bundles.ContainsKey(abname))
+        if (!bundles.ContainsKey(abName))
         {
             byte[] stream = null;
-            string uri = App.DataPath + abname;
+            string uri = App.DataPath + abName;
             Debug.LogWarning("LoadFile::>> " + uri);
-            LoadDependencies(abname);
+            LoadDependencies(abName);
 
             stream = File.ReadAllBytes(uri);
             bundle = AssetBundle.LoadFromMemory(stream); //关联数据的素材绑定
-            bundles.Add(abname, bundle);
+            bundles.Add(abName, bundle);
         }
         else
         {
-            bundles.TryGetValue(abname, out bundle);
+            bundles.TryGetValue(abName, out bundle);
         }
         return bundle;
     }

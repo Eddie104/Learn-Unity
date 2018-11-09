@@ -9,6 +9,7 @@ public class ResourceManagerWrap
 		L.BeginClass(typeof(ResourceManager), typeof(UnityEngine.MonoBehaviour));
 		L.RegFunction("Initialize", Initialize);
 		L.RegFunction("LoadPrefab", LoadPrefab);
+		L.RegFunction("LoadSpritesWithAsset", LoadSpritesWithAsset);
 		L.RegFunction("LoadAssetBundle", LoadAssetBundle);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
@@ -42,6 +43,25 @@ public class ResourceManagerWrap
 			string[] arg1 = ToLua.CheckStringArray(L, 3);
 			LuaFunction arg2 = ToLua.CheckLuaFunction(L, 4);
 			obj.LoadPrefab(arg0, arg1, arg2);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int LoadSpritesWithAsset(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 4);
+			ResourceManager obj = (ResourceManager)ToLua.CheckObject<ResourceManager>(L, 1);
+			string arg0 = ToLua.CheckString(L, 2);
+			string arg1 = ToLua.CheckString(L, 3);
+			LuaFunction arg2 = ToLua.CheckLuaFunction(L, 4);
+			obj.LoadSpritesWithAsset(arg0, arg1, arg2);
 			return 0;
 		}
 		catch (Exception e)

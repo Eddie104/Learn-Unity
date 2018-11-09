@@ -4,19 +4,36 @@ using UnityEditor;
 using UnityEngine;
 public class AesstBundle : MonoBehaviour {
 
-    [MenuItem ("Libra/Package AssetBundle(mac)")]
-    private static void PackageBuddle () {
-        Debug.Log ("<color=#FF0000>Packaging AssetBundle...</color>");
+    [MenuItem("Libra/Package AssetBundle(mac)")]
+    private static void PackageBuddle()
+    {
+        Debug.Log("<color=#FF0000>Packaging AssetBundle...</color>");
         string abPath = Application.dataPath + "/AssetBundles";
-        if (Directory.Exists (abPath))
-            Directory.Delete (abPath, true);
-        Directory.CreateDirectory (abPath);
+        if (Directory.Exists(abPath))
+            Directory.Delete(abPath, true);
+        Directory.CreateDirectory(abPath);
         // if (!Directory.Exists (abPath)) {
 
         // }
-        BuildPipeline.BuildAssetBundles (abPath, BuildAssetBundleOptions.None, BuildTarget.StandaloneOSX);
-        AssetDatabase.Refresh ();
-        Debug.Log ("<color=#FF0000>Packaging AssetBundle Done</color>");
+        BuildPipeline.BuildAssetBundles(abPath, BuildAssetBundleOptions.None, BuildTarget.StandaloneOSX);
+        AssetDatabase.Refresh();
+        Debug.Log("<color=#FF0000>Packaging AssetBundle Done</color>");
+    }
+
+    [MenuItem("Libra/Package AssetBundle(mac debug)")]
+    private static void PackageBuddleDebug()
+    {
+        Debug.Log("<color=#FF0000>Packaging AssetBundle...</color>");
+        string abPath = Application.dataPath + "/StreamingAssets";
+        if (Directory.Exists(abPath))
+            Directory.Delete(abPath, true);
+        Directory.CreateDirectory(abPath);
+        // if (!Directory.Exists (abPath)) {
+
+        // }
+        BuildPipeline.BuildAssetBundles(abPath, BuildAssetBundleOptions.None, BuildTarget.StandaloneOSX);
+        AssetDatabase.Refresh();
+        Debug.Log("<color=#FF0000>Packaging AssetBundle Done</color>");
     }
 
     // [MenuItem ("Custom Bundle/Create Bundel Main")]

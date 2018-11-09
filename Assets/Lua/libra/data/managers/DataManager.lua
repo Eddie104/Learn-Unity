@@ -7,7 +7,6 @@ local DataManager = class("DataManager", require('libra.data.Emitter'))
 
 function DataManager:ctor()
 	DataManager.super.ctor(self)
-	-- cc(self):addComponent("components.behavior.EventProtocol"):exportMethods()
 	self._dataList = { }
 end
 

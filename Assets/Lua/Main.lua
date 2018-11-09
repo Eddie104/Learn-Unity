@@ -3,7 +3,8 @@
 function Main()
 	require("libra.init")
 	logInfo("logic start")
-	local ab = AssetBundle.LoadFromFile(Application.dataPath .. "/AssetBundles/test")
+	-- local ab = AssetBundle.LoadFromFile(Application.dataPath .. "/AssetBundles/test")
+	resManager:LoadAssetBundle('test')
 	-- local hong = ab:LoadAsset("hong")
 	-- local go = GameObject()
 	-- go.name = 'test'
@@ -42,10 +43,7 @@ function Main()
 	-- end
 
 	roleManager = require("app.model.RoleManager").new()
-
-	local Role = require("app.model.Role")
-	local role = Role.new(ab:LoadAsset('Role'))
-	role:test()
+	roleManager:addData(1, 1)
 
 	-- update事件监听
 	local updateHandler = UpdateBeat:CreateListener(update, self)

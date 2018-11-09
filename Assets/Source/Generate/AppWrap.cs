@@ -11,6 +11,8 @@ public class AppWrap
 		L.RegVar("ResourceManager", get_ResourceManager, set_ResourceManager);
 		L.RegVar("EditorMode", get_EditorMode, null);
 		L.RegVar("Platform", get_Platform, null);
+		L.RegVar("NetAvailable", get_NetAvailable, null);
+		L.RegVar("IsWifi", get_IsWifi, null);
 		L.RegVar("DataPath", get_DataPath, null);
 		L.EndStaticLibs();
 	}
@@ -65,6 +67,34 @@ public class AppWrap
 		try
 		{
 			LuaDLL.lua_pushstring(L, App.Platform);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_NetAvailable(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushboolean(L, App.NetAvailable);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_IsWifi(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushboolean(L, App.IsWifi);
 			return 1;
 		}
 		catch (Exception e)
