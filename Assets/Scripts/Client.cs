@@ -7,6 +7,26 @@ using UnityEngine;
 /// </summary>
 public class Client : LuaClient
 {
+
+    public float devWidth = 9.6f;
+    public float devHeight = 6.4f;
+
+    void Start()
+    {
+        float screenHeight = Screen.height;
+        //float orthographicSize = GetComponent<Camera>().orthographicSize;
+        float orthographicSize = Camera.main.orthographicSize;
+        float aspectRatio = Screen.width * 1.0f / Screen.height;
+        float cameraWidth = orthographicSize * 2 * aspectRatio;
+        if (cameraWidth < devWidth)
+        {
+            orthographicSize = devWidth / (2 * aspectRatio);
+            GetComponent<Camera>().orthographicSize = orthographicSize;
+        }
+        // 让摄像机位于场景的右上角，这样看到的场景的(0，0)点就在左下角
+        Camera.main.transform.position = new Vector3(devWidth / 2, devHeight / 2, -1.0f);
+    }
+
     protected override void Init()
     {
         // 设置为切换场景不被销毁的属性

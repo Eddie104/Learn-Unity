@@ -2,6 +2,7 @@
 --主入口函数。从这里开始lua逻辑
 function Main()
 	require("libra.init")
+	spritePool = require("app.utils.spritePool")
 	logInfo("logic start")
 	-- local ab = AssetBundle.LoadFromFile(Application.dataPath .. "/AssetBundles/test")
 	resManager:LoadAssetBundle('test')
@@ -45,9 +46,14 @@ function Main()
 	roleManager = require("app.model.RoleManager").new()
 	roleManager:addData(1, 1)
 
+	-- local role = roleManager:addData(1, 2)
+	-- role:setXY(display.cx + 1, display.cy)
+
 	-- update事件监听
 	local updateHandler = UpdateBeat:CreateListener(update, self)
 	UpdateBeat:AddListener(updateHandler)
+
+	logError(display.width)
 end
 
 function update()

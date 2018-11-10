@@ -9,7 +9,43 @@ import json
 from pyquery import PyQuery
 
 
-snippets_arr = [];
+snippets_arr = [
+	'''"Load scene": {
+		"prefix": "LoadScene",
+		"body": [
+			"SceneManager.LoadScene('$1')"
+		],
+		"description": "Load scene"
+	},
+	"Log info": {
+		"prefix": "logInfo",
+		"body": [
+			"logInfo('$1')"
+		],
+		"description": "logInfo"
+	},
+	"Log debug": {
+		"prefix": "logDebug",
+		"body": [
+			"logDebug('$1')"
+		],
+		"description": "logDebug"
+	},
+	"Log warn": {
+		"prefix": "logWarn",
+		"body": [
+			"logWarn('$1')"
+		],
+		"description": "logWarn"
+	},
+	"Log error": {
+		"prefix": "logError",
+		"body": [
+			"logError('$1')"
+		],
+		"description": "logError"
+	}'''
+];
 
 
 def read_file(path):
@@ -83,15 +119,16 @@ def fetch_detail(url, class_name, key, type):
 			val = div.find('p').text()
 			break
 	global snippets_arr
-	if type in ['Properties', 'Static Properties']:
+	# if type in ['Properties', 'Static Properties']:
+	if type in ['Static Properties']:
 		sign = pq('div.signature-CS').text().replace('public', '').replace(key, '').replace(';', '').strip()
 		snippets_arr.append(create_snippet(class_name, key, val, type, sign))
-	elif type in ['Public Methods', 'Static Methods']:
-		sign = pq('div.signature-CS').text()
-		snippets_arr.append(create_snippet(class_name, key, val, type, sign))
-	elif type == 'Messages':
-		sign = ''
-		snippets_arr.append(create_snippet(class_name, key, val, type, sign))
+	# elif type in ['Public Methods', 'Static Methods']:
+	# 	sign = pq('div.signature-CS').text()
+	# 	snippets_arr.append(create_snippet(class_name, key, val, type, sign))
+	# elif type == 'Messages':
+	# 	sign = ''
+	# 	snippets_arr.append(create_snippet(class_name, key, val, type, sign))
 
 
 def fetch_page(url, class_name):
@@ -118,7 +155,8 @@ def do_data(data):
 
 
 def main():
-	txt = get('https://docs.unity3d.com/ScriptReference/docdata/global_toc.js').html(
+	# txt = get('https://docs.unity3d.com/ScriptReference/docdata/global_toc.js').html(
+	txt = get('https://docs.unity3d.com/ScriptReference/docdata/toc.js').html(
 	).replace('</t0>', '').replace('var toc = ', '')
 	json_data = json.loads(txt)
 	# print(json_data)
@@ -129,6 +167,18 @@ def main():
 			break
 	for data in data_arr:
 		do_data(data)
+
+	# txt = get('https://docs.unity3d.com/ScriptReference/docdata/toc.js').html(
+	# ).replace('</t0>', '').replace('var toc = ', '')
+	# json_data = json.loads(txt)
+	# # print(json_data)
+	# data_arr = json_data.get('children')[0].get('children')
+	# for data in data_arr:
+	# 	if data.get('title') == 'Classes':
+	# 		data_arr = data.get('children')
+	# 		break
+	# for data in data_arr:
+	# 	do_data(data)
 
 
 if __name__ == '__main__':

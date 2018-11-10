@@ -16,7 +16,7 @@
         <key>premultiplyAlpha</key>
         <false/>
         <key>shapeDebug</key>
-        <false/>
+        <true/>
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
@@ -142,7 +142,7 @@
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">None</enum>
+            <enum type="SpriteSettings::TrimMode">Trim</enum>
             <key>heuristicMask</key>
             <false/>
         </struct>

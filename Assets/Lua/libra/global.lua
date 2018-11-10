@@ -1,5 +1,6 @@
 -- 全局变量
 Application        = UnityEngine.Application
+Screen             = UnityEngine.Screen
 -- AudioListener   = UnityEngine.AudioListener
 -- BoxCollider     = UnityEngine.BoxCollider
 -- CapsuleCollider = UnityEngine.CapsuleCollider
