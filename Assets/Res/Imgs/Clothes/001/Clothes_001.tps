@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>unity</string>
         <key>textureFileName</key>
-        <filename>../../../../Imgs/Clothes/001/Clothes_001.png</filename>
+        <filename>../../../../Imgs/Clothes/001/clothes_001.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>../../../../Imgs/Clothes/001/Clothes_001.txt</filename>
+        <filename>../../../../Imgs/Clothes/001/clothes_001.txt</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -142,17 +142,17 @@
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">None</enum>
+            <enum type="SpriteSettings::TrimMode">Trim</enum>
             <key>heuristicMask</key>
             <false/>
         </struct>
         <key>fileList</key>
         <array>
-            <filename>Clothes_001_3_01_f.png</filename>
-            <filename>Clothes_001_3_01.png</filename>
-            <filename>Clothes_001_3_02_f.png</filename>
-            <filename>Clothes_001_3_03_f.png</filename>
-            <filename>Clothes_001_3_04_f.png</filename>
+            <filename>clothes_001_3_01.png</filename>
+            <filename>clothes_f_001_3_01.png</filename>
+            <filename>clothes_f_001_3_02.png</filename>
+            <filename>clothes_f_001_3_03.png</filename>
+            <filename>clothes_f_001_3_04.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

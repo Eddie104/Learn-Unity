@@ -16,7 +16,7 @@
         <key>premultiplyAlpha</key>
         <false/>
         <key>shapeDebug</key>
-        <true/>
+        <false/>
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>

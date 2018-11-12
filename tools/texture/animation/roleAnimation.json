@@ -1,0 +1,52 @@
+[
+    {
+        "name": "idle3",
+        "frames": [
+            {
+                "body": {
+                    "name": "3_01"
+                },
+                "hand": {
+                    "name": "3_hand_01"
+                }
+            }
+        ]
+    },
+    {
+        "name": "walk3",
+        "frames": [
+            {
+                "body": {
+                    "name": "3_02"
+                },
+                "hand": {
+                    "name": "3_hand_02"
+                }
+            },
+            {
+                "body": {
+                    "name": "3_01"
+                },
+                "hand": {
+                    "name": "3_hand_01"
+                }
+            },
+            {
+                "body": {
+                    "name": "3_03"
+                },
+                "hand": {
+                    "name": "3_hand_03"
+                }
+            },
+            {
+                "body": {
+                    "name": "3_01"
+                },
+                "hand": {
+                    "name": "3_hand_01"
+                }
+            }
+        ]
+    }
+]

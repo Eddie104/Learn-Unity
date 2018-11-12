@@ -3,8 +3,6 @@ local AnimationObject = class("AnimationObject", require("app.model.data.base.Di
 function AnimationObject:ctor(abName, prefabName)
     AnimationObject.super.ctor(self, abName, prefabName)
 
-    -- resManager:LoadSpritesWithPrefab(abName, prefabName)
-
     -- delay time
     self._dt = 0
     -- 当前帧的索引
@@ -28,7 +26,7 @@ function AnimationObject:play(animationName, loop)
         for i, v in ipairs(self._animationFrameArr) do
             if v.name == animationName then
                 self._animationName = animationName
-                self._animationFrame = v.frame
+                self._animationFrame = v.frames
                 self._curFrame = 0
                 self._totalFrame = #self._animationFrame
                 self._loop = loop or 0
@@ -45,6 +43,7 @@ end
 function AnimationObject:onUpdate()
     if self._isPlaying then
         self._dt = self._dt + Time.deltaTime
+        -- 200毫秒更换一帧
         if self._dt > 0.2 then
             self._dt = 0
             self:curFrame(self._curFrame + 1)

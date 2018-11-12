@@ -11,7 +11,7 @@ script_root = os.path.split(os.path.realpath(__file__))[0]
 # 客户端根目录
 game_root = os.path.split(script_root)[0]
 # 资源目录
-res_root = '../../timetown-res'
+res_root = '../../../timetown-res'
 
 down_root = '%s/Downloads' % os.path.expanduser('~')
 
