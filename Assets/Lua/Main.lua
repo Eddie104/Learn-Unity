@@ -1,24 +1,13 @@
+DATA_CONFIG_PACKAGE = 'app.config'
+-- 地图单元格的宽度
+CELL_SIZE = 0.96
 
 --主入口函数。从这里开始lua逻辑
 function Main()
 	require("libra.init")
 	spritePool = require("app.utils.spritePool")
 	logInfo("logic start")
-	-- local ab = AssetBundle.LoadFromFile(Application.dataPath .. "/AssetBundles/test")
 	resManager:LoadAssetBundle('test')
-	-- local hong = ab:LoadAsset("hong")
-	-- local go = GameObject()
-	-- go.name = 'test'
-	-- local spriteRenderer = go:AddComponent(typeof(SpriteRenderer))
-	-- spriteRenderer.sprite = Sprite.Create(hong, Rect(0, 0, hong.width, hong.height), Vector2(0.5, 0.5))
-
-	-- 动画测试
-	-- local npc = ab:LoadAsset('NPC_001')
-	-- GameObject.Instantiate(npc)
-
-	-- local furniture = ab:LoadAsset('furni_003')
-	-- GameObject.Instantiate(furniture)
-
 
 	-- animator = role:GetComponent(typeof(Animator))
 	-- body, hand
@@ -37,17 +26,13 @@ function Main()
 		end
 	end
 	]]
-	-- dump(body)
-	-- print(typeof(hand))
-	-- for i, v in ipairs(roleTransformArr) do
-	-- 	print(i,v.name)
-	-- end
 
+	-- 角色管理
 	roleManager = require("app.model.RoleManager").new()
 	roleManager:addData(1, 1)
-
-	-- local role = roleManager:addData(1, 2)
-	-- role:setXY(display.cx + 1, display.cy)
+	-- 场景管理
+	sceneManager = require("app.model.SceneManager").new():init(1)
+	sceneManager:test()
 
 	-- update事件监听
 	local updateHandler = UpdateBeat:CreateListener(update, self)
@@ -74,6 +59,7 @@ function update()
 	end
 	]]
 	roleManager:onUpdate()
+	sceneManager:onUpdate()
 end
 
 --场景切换通知

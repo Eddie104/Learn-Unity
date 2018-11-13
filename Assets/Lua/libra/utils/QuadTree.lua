@@ -197,27 +197,27 @@ end
 -- 	end
 -- end
 
-function QuadTree:debug(deep)
-	local lineBorder = {borderColor = cc.c4f(1.0, 0.0, 0.0, 1.0)}
+-- function QuadTree:debug(deep)
+-- 	local lineBorder = {borderColor = cc.c4f(1.0, 0.0, 0.0, 1.0)}
 
-	local uiContainer = uiManager:getUIContainer()
-	-- 水平或者垂直方向上的线条数量
-	-- 2的deep次方减1
-	local nums = math.ldexp(1, deep) - 1
-	-- 先画水平的线
-	local gap = checkint(display.height / (nums + 1))
-	local x, y = 0, gap
-	for i = 1, nums do
-		display.newLine({{x, y}, {display.width, y}}, lineBorder):addTo(uiContainer, 999)
-		y = y + gap
-	end
-	-- 再画垂直的线
-	gap = checkint(display.width / (nums + 1))
-	x, y = gap, 0
-	for i = 1, nums do
-		display.newLine({{x, y}, {x, display.height}}, lineBorder):addTo(uiContainer, 999)
-		x = x + gap
-	end
-end
+-- 	local uiContainer = uiManager:getUIContainer()
+-- 	-- 水平或者垂直方向上的线条数量
+-- 	-- 2的deep次方减1
+-- 	local nums = math.ldexp(1, deep) - 1
+-- 	-- 先画水平的线
+-- 	local gap = checkint(display.height / (nums + 1))
+-- 	local x, y = 0, gap
+-- 	for i = 1, nums do
+-- 		display.newLine({{x, y}, {display.width, y}}, lineBorder):addTo(uiContainer, 999)
+-- 		y = y + gap
+-- 	end
+-- 	-- 再画垂直的线
+-- 	gap = checkint(display.width / (nums + 1))
+-- 	x, y = gap, 0
+-- 	for i = 1, nums do
+-- 		display.newLine({{x, y}, {x, display.height}}, lineBorder):addTo(uiContainer, 999)
+-- 		x = x + gap
+-- 	end
+-- end
 
 return QuadTree

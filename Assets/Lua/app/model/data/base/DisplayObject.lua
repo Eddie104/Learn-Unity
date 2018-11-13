@@ -11,27 +11,27 @@ function DisplayObject:ctor(abName, prefabName)
 end
 
 function DisplayObject:x(val)
-    local position = self._transform.position
+    local localPosition = self._transform.localPosition
     if val then
-        self._transform.position = Vector2(val, position.y)
+        self._transform.localPosition = Vector2(val, localPosition.y)
         return self
     end
-    return position.x
+    return localPosition.x
 end
 
 function DisplayObject:y(val)
-    local position = self._transform.position
+    local localPosition = self._transform.localPosition
     if val then
-        self._transform.position = Vector2(position.x, val)
+        self._transform.localPosition = Vector2(localPosition.x, val)
         return self
     end
-    return position.y
+    return localPosition.y
 end
 
 function DisplayObject:setXY(x, y)
     x = x or 0
     y = y or 0
-    self._transform.position = Vector2(x, y)
+    self._transform.localPosition = Vector2(x, y)
 end
 
 function DisplayObject:addXY(x, y)

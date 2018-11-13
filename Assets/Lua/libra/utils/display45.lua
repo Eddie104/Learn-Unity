@@ -22,7 +22,7 @@ local display45 = { }
 -- -- @param {Number} cellWidth 格子宽度
 -- -- @return {{x: Number, y: Number}} 结果
 -- function display45.getItemPointAtPoint(x, y, cellWidth)
--- 	x, y = display45.trans45To90(x, y);
+-- 	x, y = display45.trans45To90(x, y)
 -- 	return math.floor(x / cellWidth), math.floor(y / (cellWidth / 2))
 -- end
 
@@ -34,28 +34,28 @@ local display45 = { }
 -- @param {Number} topPointY 顶点纵坐标
 -- @return {{col: Number, row: Number}} 结果
 function display45.getItemIndex(mouseX, mouseY, cellWidth, topPointX, topPointY)
-	mouseX = mouseX - topPointX;
-	mouseY = topPointY - mouseY;
+	mouseX = mouseX - topPointX
+	mouseY = topPointY - mouseY
 	local row = (mouseY / (cellWidth / 2)) - (mouseX / cellWidth)
 	local col = (mouseX / cellWidth) + (mouseY / (cellWidth / 2))
-	row = row < 0 and -1 or row;
-	col = col < 0 and -1 or col;
+	row = row < 0 and -1 or row
+	col = col < 0 and -1 or col
 	-- print(row, col)
 	-- return math.floor(row + 0.00001), math.floor(col + 0.00001)
 	return math.floor(row), math.floor(col)
 	--[[
-	mouseX -= topPointX;
-    mouseY -= topPointY;
-    let row = (mouseY / (cellWidth / 2)) - (mouseX / cellWidth);
-    let col = (mouseX / cellWidth) + (mouseY / (cellWidth / 2));
-    row = row < 0 ? -1 : row;
-    col = col < 0 ? -1 : col;
-    // row = row < 0 ? 0 : row;
-    // col = col < 0 ? 0 : col;
+	mouseX -= topPointX
+    mouseY -= topPointY
+    let row = (mouseY / (cellWidth / 2)) - (mouseX / cellWidth)
+    let col = (mouseX / cellWidth) + (mouseY / (cellWidth / 2))
+    row = row < 0 ? -1 : row
+    col = col < 0 ? -1 : col
+    // row = row < 0 ? 0 : row
+    // col = col < 0 ? 0 : col
     return {
         row: parseInt(row, 10),
         col: parseInt(col, 10),
-    };
+    }
 	]]
 end
 
