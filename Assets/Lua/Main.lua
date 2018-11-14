@@ -1,6 +1,6 @@
 DATA_CONFIG_PACKAGE = 'app.config'
 -- 地图单元格的宽度
-CELL_SIZE = 0.96
+CELL_SIZE = 0.48
 
 --主入口函数。从这里开始lua逻辑
 function Main()
@@ -29,7 +29,6 @@ function Main()
 
 	-- 角色管理
 	roleManager = require("app.model.RoleManager").new()
-	roleManager:addData(1, 1)
 	-- 场景管理
 	sceneManager = require("app.model.SceneManager").new():init(1)
 	sceneManager:test()

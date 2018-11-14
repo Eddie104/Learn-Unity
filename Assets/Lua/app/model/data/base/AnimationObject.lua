@@ -1,7 +1,7 @@
 local AnimationObject = class("AnimationObject", require("app.model.data.base.DisplayObject"))
 
-function AnimationObject:ctor(abName, prefabName)
-    AnimationObject.super.ctor(self, abName, prefabName)
+function AnimationObject:ctor()
+    AnimationObject.super.ctor(self)
 
     -- delay time
     self._dt = 0

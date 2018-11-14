@@ -1,7 +1,7 @@
 local MapObject = class("MapObject", require("app.model.data.base.DisplayObject"))
 
-function MapObject:ctor(abName, prefabName)
-    MapObject.super.ctor(self, abName, prefabName)
+function MapObject:ctor()
+    MapObject.super.ctor(self)
     self._row, self._col = -1, -1
 end
 

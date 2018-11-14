@@ -3,7 +3,7 @@
 -- Date: 2018-11-08 17:59:01
 --
 
-local Role = require("app.model.data.Role")
+local Role = require("app.model.data.role.Role")
 
 local RoleManager = class("RoleManager", require('libra.data.managers.DataManager'))
 

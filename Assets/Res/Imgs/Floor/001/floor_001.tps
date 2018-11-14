@@ -148,7 +148,11 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>floor_001.png</filename>
+            <filename>floor_001_1.png</filename>
+            <filename>floor_001_2.png</filename>
+            <filename>floor_001_3.png</filename>
+            <filename>floor_001_4.png</filename>
+            <filename>floor_001_5.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -1,31 +1,19 @@
 ManifestFileVersion: 0
-CRC: 643184846
+CRC: 2122710488
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 057cebac6f3ee58825303ef503ea0a07
+    Hash: 875dd0d23e5a3f3cf30d2bb6c346c0ac
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 84efe8a70a27dc8f7efd484857bb4459
+    Hash: ea5a42e0fd8ea905efa7aa926a3b8944
 HashAppended: 0
 ClassTypes:
-- Class: 1
-  Script: {instanceID: 0}
-- Class: 4
-  Script: {instanceID: 0}
-- Class: 21
-  Script: {instanceID: 0}
 - Class: 28
-  Script: {instanceID: 0}
-- Class: 48
-  Script: {instanceID: 0}
-- Class: 212
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
 Assets:
-- Assets/Prefabs/Role.prefab
 - Assets/Imgs/Floor/001/floor_001.png
-- Assets/Prefabs/Floor.prefab
 - Assets/Imgs/Role/001/role_001.png
 Dependencies: []
