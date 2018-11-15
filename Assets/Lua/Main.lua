@@ -1,6 +1,21 @@
 DATA_CONFIG_PACKAGE = 'app.config'
 -- 地图单元格的宽度
 CELL_SIZE = 0.48
+-- 方向
+DIR = {
+	TOP = 0,
+	TOP_LEFT = 1,
+	LEFT_TOP = 1,
+	LEFT = 2,
+	LEFT_BOTTOM = 3,
+	BOTTOM_LEFT = 3,
+	BOTTOM = 4,
+	RIGHT_BOTTOM = 5,
+	BOTTOM_RIGHT = 5,
+	RIGHT = 6,
+	TOP_RIGHT = 7,
+	RIGHT_TOP = 7,
+}
 
 --主入口函数。从这里开始lua逻辑
 function Main()
@@ -19,6 +34,9 @@ function Main()
 	-- update事件监听
 	local updateHandler = UpdateBeat:CreateListener(update, self)
 	UpdateBeat:AddListener(updateHandler)
+
+	local fixedUpdateHandler = FixedUpdateBeat:CreateListener(fixedUpdate, self)
+	FixedUpdateBeat:AddListener(fixedUpdateHandler)
 end
 
 function update()
@@ -40,6 +58,11 @@ function update()
 	]]
 	roleManager:onUpdate()
 	sceneManager:onUpdate()
+end
+
+function fixedUpdate()
+	roleManager:onFixedUpdate()
+	sceneManager:onFixedUpdate()
 end
 
 --场景切换通知

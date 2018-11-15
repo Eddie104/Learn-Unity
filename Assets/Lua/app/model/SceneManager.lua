@@ -1,4 +1,5 @@
 local Floor = require("app.model.data.Floor")
+local AStar = require("libra.aStar.AStar")
 local SceneManager = class("SceneManager")
 
 function SceneManager:ctor()
@@ -80,7 +81,7 @@ function SceneManager:test()
         '1,0,0,1,1,1',
         '1,1,0,0,0,1',
         '1,1,0,1,1,1',
-        '1,1,1,0,0,1',
+        '1,1,1,1,0,1',
     }
     self._map = {}
     local toNumber = function (v) return checknumber(v) end
@@ -88,6 +89,8 @@ function SceneManager:test()
         self._map[row] = string.split(v, ',')
         table.map(self._map[row], toNumber)
     end
+    -- 初始化a*
+    self._aStar = AStar.new(self._map, 1)
     self._row = #rowArr
     self._col = #self._map[1]
     self._mapWidth = CELL_SIZE / 2 * (self._row + self._col)
@@ -102,10 +105,30 @@ function SceneManager:test()
         end
     end
     -- 加个角色
-    local role = roleManager:addData(1, 1):addTo(self._roomContainerTransform):setRowAndCol(1, 0)
+    self._role = roleManager:addData(1, 1):addTo(self._roomContainerTransform):setRowAndCol(1, 0)
 end
 
 function SceneManager:onUpdate()
+    if Input.GetMouseButtonUp(0) then
+        local mouseV3 = Input.mousePosition
+        local row, col = display45.getItemIndex(mouseV3.x / 100, mouseV3.y / 100, CELL_SIZE, self.mapTopPointX, self.mapTopPointY)
+        logError('row = ' .. row .. ', col = ' .. col)
+        local path = self._aStar:find(self._role:col() + 1, self._role:row() + 1, col + 1, row + 1)
+        if path then
+            for node, count in path:nodes() do
+                print(('Step: %d - x: %d - y: %d'):format(count, node:getX(), node:getY()))
+                -- self._pathArr[count] = node
+            end
+            self._role:startMove(path, function ()
+                print('walk done')
+            end)
+        else
+            print('no way')
+        end
+    end
+end
+
+function SceneManager:onFixedUpdate()
     -- body
 end
 

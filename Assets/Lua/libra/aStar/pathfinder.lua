@@ -109,7 +109,7 @@ if (...) then
         for x = self._grid._max_x, self._grid._min_x, -1 do
              for y = self._grid._max_y, self._grid._min_y, -1 do
                 local node = self._grid:getNodeAt(x, y)
-                if self._grid:isWalkableAt(x, y, self._walkable) then                    
+                if self._grid:isWalkableAt(x, y, self._walkable) then
                       local nr = self._grid:getNodeAt(node._x+1, node._y)
                       local nrd = self._grid:getNodeAt(node._x+1, node._y+1)
                       local nd = self._grid:getNodeAt(node._x, node._y+1)

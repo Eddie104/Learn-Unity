@@ -8,6 +8,9 @@ function Role:ctor()
     self.offsetX, self.offsetY = 0, 0.3
     -- 添加组件
     require("app.model.data.component.CMapObject")(self)
+    require("app.model.data.component.CMovableObject")(self)
+
+    self._dir = -1
 end
 
 function Role:init()
@@ -36,6 +39,10 @@ function Role:updateSprite()
     local frame = self._animationFrame[self._curFrame]
     self._bodyDisplayObject:updateSprite(frame.body)
     self._handDisplayObject:updateSprite(frame.hand)
+end
+
+function Role:onFixedUpdate()
+    self:move()
 end
 
 return Role

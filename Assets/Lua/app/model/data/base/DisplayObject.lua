@@ -49,8 +49,14 @@ function DisplayObject:setXY(x, y)
     return self
 end
 
+function DisplayObject:getXY()
+    local localPosition = self._transform.localPosition
+    return keepTwoDecimalPlaces(localPosition.x), keepTwoDecimalPlaces(localPosition.y)
+end
+
 function DisplayObject:addXY(x, y)
     self._transform:Translate(Vector3(x or 0, y or 0))
+    -- self._transform.position = self._transform.position + Vector3(x or 0, y or 0, 0)
     return self
 end
 

@@ -18,6 +18,12 @@ function RoleManager:onUpdate()
 	end
 end
 
+function RoleManager:onFixedUpdate()
+	for i, v in ipairs(self._dataList) do
+		v:onFixedUpdate()
+	end
+end
+
 function RoleManager:getDataType()
 	return Role
 end
