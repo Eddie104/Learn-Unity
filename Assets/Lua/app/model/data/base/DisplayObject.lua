@@ -1,13 +1,7 @@
 local DisplayObject = class("DisplayObject", require("libra.data.Object"))
 
 function DisplayObject:ctor()
-    -- resManager:LoadPrefab(abName, { prefabName }, function (prefabs)
-    --     self._displayObject = GameObject.Instantiate(prefabs[0])
-    --     self._transform = self._displayObject:GetComponent(typeof(Transform))
-    --     -- 获取SpriteRenderer组件
-    --     -- 并不是所有gameObject都有SpriteRenderer的，得看prefab里是否添加了SpriteRenderer组件
-    --     self._spriteRenderer = self._displayObject:GetComponent(typeof(SpriteRenderer))
-    -- end)
+    self._inited = false
     self:init()
 end
 
@@ -21,11 +15,14 @@ function DisplayObject:name(val)
 end
 
 function DisplayObject:init()
-    self._displayObject = GameObject()
-    -- 拿到Transform组件
-    self._transform = self._displayObject:GetComponent(typeof(Transform))
-    -- 添加SpriteRenderer组件
-    self._spriteRenderer = self._displayObject:AddComponent(typeof(SpriteRenderer))
+    if not self._inited then
+        self._inited = true
+        self._displayObject = GameObject()
+        -- 拿到Transform组件
+        self._transform = self._displayObject:GetComponent(typeof(Transform))
+        -- 添加SpriteRenderer组件
+        self._spriteRenderer = self._displayObject:AddComponent(typeof(SpriteRenderer))
+    end
     return self
 end
 
@@ -48,15 +45,18 @@ function DisplayObject:y(val)
 end
 
 function DisplayObject:setXY(x, y)
-    x = x or 0
-    y = y or 0
-    self._transform.localPosition = Vector2(x, y)
+    self._transform.localPosition = Vector2(x or 0, y or 0)
+    return self
 end
 
 function DisplayObject:addXY(x, y)
-    x = x or 0
-    y = y or 0
-    self._transform:Translate(Vector3(x, y))
+    self._transform:Translate(Vector3(x or 0, y or 0))
+    return self
+end
+
+function DisplayObject:addTo(parent)
+    self._transform:SetParent(parent)
+    return self
 end
 
 function DisplayObject:onUpdate()
