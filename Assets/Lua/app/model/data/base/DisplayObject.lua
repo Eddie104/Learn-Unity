@@ -22,40 +22,49 @@ function DisplayObject:init()
         self._transform = self._displayObject:GetComponent(typeof(Transform))
         -- 添加SpriteRenderer组件
         self._spriteRenderer = self._displayObject:AddComponent(typeof(SpriteRenderer))
+        -- 数据层的坐标
+        self.x, self.y = 0
     end
     return self
 end
 
 function DisplayObject:x(val)
-    local localPosition = self._transform.localPosition
     if val then
-        self._transform.localPosition = Vector2(val, localPosition.y)
+        self.x = val
+        self._transform.localPosition = Vector2(keepTwoDecimalPlaces(val), localPosition.y)
         return self
     end
-    return localPosition.x
+    return self.x
 end
 
 function DisplayObject:y(val)
-    local localPosition = self._transform.localPosition
     if val then
-        self._transform.localPosition = Vector2(localPosition.x, val)
+        self.y = val
+        self._transform.localPosition = Vector2(localPosition.x, keepTwoDecimalPlaces(val))
         return self
     end
-    return localPosition.y
+    return self.y
 end
 
 function DisplayObject:setXY(x, y)
-    self._transform.localPosition = Vector2(x or 0, y or 0)
+    if self.x ~= x and self.y ~= y then
+        self.x, self.y = x, y
+        x = x and keepTwoDecimalPlaces(x) or 0
+        y = y and keepTwoDecimalPlaces(y) or 0
+        self._transform.localPosition = Vector2(x, y)
+    end
     return self
 end
 
 function DisplayObject:getXY()
-    local localPosition = self._transform.localPosition
-    return keepTwoDecimalPlaces(localPosition.x), keepTwoDecimalPlaces(localPosition.y)
+    return self.x, self.y
 end
 
 function DisplayObject:addXY(x, y)
-    self._transform:Translate(Vector3(x or 0, y or 0))
+    self.x, self.y = self.x + x, self.y + y
+    x = x and keepTwoDecimalPlaces(x) or 0
+    y = y and keepTwoDecimalPlaces(y) or 0
+    self._transform:Translate(Vector3(x, y))
     -- self._transform.position = self._transform.position + Vector3(x or 0, y or 0, 0)
     return self
 end
@@ -66,6 +75,14 @@ function DisplayObject:addTo(parent)
 end
 
 function DisplayObject:onUpdate()
+    -- body
+end
+
+function DisplayObject:onLateUpdate()
+    -- body
+end
+
+function DisplayObject:onFixedUpdate()
     -- body
 end
 

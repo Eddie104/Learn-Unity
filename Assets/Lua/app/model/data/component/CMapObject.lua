@@ -17,8 +17,8 @@ return function (obj)
         return self._col
     end
 
-    obj.setRowAndCol = function (self, row, col)
-        if self._row ~= row and self._col ~= col then
+    obj.setRowAndCol = function (self, row, col, force)
+        if force or (self._row ~= row and self._col ~= col) then
             self._row, self._col = row, col
             local x, y = display45.getItemPos(row, col, CELL_SIZE, sceneManager.mapTopPointX, sceneManager.mapTopPointY)
             self:setXY(x + (self.offsetX or 0), y + (self.offsetY or 0))

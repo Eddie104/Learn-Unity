@@ -8,6 +8,8 @@ function SceneManager:ctor()
     -- 地图的宽度和高度
     self._mapWidth, self._mapHeight = 0, 0
     self.mapTopPointX, self.mapTopPointY = display.cx, display.cy
+
+    -- self._time = 0
 end
 
 function SceneManager:init(sceneType)
@@ -105,6 +107,7 @@ function SceneManager:test()
         end
     end
     -- 加个角色
+    roleManager:addData(1, 2):addTo(self._roomContainerTransform):setRowAndCol(0, 0)
     self._role = roleManager:addData(1, 1):addTo(self._roomContainerTransform):setRowAndCol(1, 0)
 end
 
@@ -128,8 +131,13 @@ function SceneManager:onUpdate()
     end
 end
 
+function SceneManager:onLateUpdate()
+	-- body
+end
+
 function SceneManager:onFixedUpdate()
-    -- body
+    -- self._time = self._time + Time.fixedDeltaTime
+    -- logError('time = '.. self._time)
 end
 
 return SceneManager

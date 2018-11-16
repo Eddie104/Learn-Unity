@@ -18,6 +18,12 @@ function RoleManager:onUpdate()
 	end
 end
 
+function RoleManager:onLateUpdate()
+	for i, v in ipairs(self._dataList) do
+		v:onLateUpdate()
+	end
+end
+
 function RoleManager:onFixedUpdate()
 	for i, v in ipairs(self._dataList) do
 		v:onFixedUpdate()

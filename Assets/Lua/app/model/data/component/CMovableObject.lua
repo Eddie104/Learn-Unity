@@ -1,5 +1,5 @@
 return function (obj)
-    obj._speed         = 0.01
+    obj._speed         = 0.04
 	obj._speedPow2     = obj._speed * obj._speed
 	obj._isMoving      = false
 	obj._pathArr       = nil
@@ -57,6 +57,7 @@ return function (obj)
                     self._targetX, self._targetY = display45.getItemPos(self._curPathNode:getY() - 1, self._curPathNode:getX() - 1, CELL_SIZE, sceneManager.mapTopPointX, sceneManager.mapTopPointY)
                     self._targetY = self._targetY - CELL_SIZE / 4
                     local curX, curY = self:getXY()
+                    -- curX, curY = curX - self.offsetX, curY - self.offsetY
                     local speedPow2 = math.pow(self._targetY - curY, 2) + math.pow(self._targetX - curX, 2)
                     if self._speedPow2 > speedPow2 then
                         -- 走到目标点了
@@ -65,9 +66,7 @@ return function (obj)
                     else
                         -- 更新row和col
                         local row, col = display45.getItemIndex(curX, curY, CELL_SIZE, sceneManager.mapTopPointX, sceneManager.mapTopPointY)
-                        -- self:setRowAndCol(row, col)
                         self:row(row):col(col)
-                        logInfo('row = '.. row .. ', col = ' .. col)
                         -- 没有到，那就继续走
                         if self._gotoNewNode then
                             self._gotoNewNode = false
@@ -107,6 +106,7 @@ return function (obj)
                             end
                             -- self:playWalk(self._dir)
                         end
+                        logError('vx = ' .. self._vx .. ', vy = ' .. self._vy)
                         self:addXY(self._vx, self._vy)
                     end
                 end
@@ -181,7 +181,7 @@ return function (obj)
             self._isMoving = false
             local node = self._pathArr[self._totalStep]
             if node then
-                self:setRowAndCol(node:getY() - 1, node:getX() - 1)
+                self:setRowAndCol(node:getY() - 1, node:getX() - 1, true)
             end
             self._pathArr = nil
             self._curStep = 1

@@ -32,11 +32,9 @@ function Main()
 	sceneManager:test()
 
 	-- update事件监听
-	local updateHandler = UpdateBeat:CreateListener(update, self)
-	UpdateBeat:AddListener(updateHandler)
-
-	local fixedUpdateHandler = FixedUpdateBeat:CreateListener(fixedUpdate, self)
-	FixedUpdateBeat:AddListener(fixedUpdateHandler)
+	UpdateBeat:AddListener(UpdateBeat:CreateListener(update, self))
+	FixedUpdateBeat:AddListener(FixedUpdateBeat:CreateListener(fixedUpdate, self))
+	LateUpdateBeat:AddListener(LateUpdateBeat:CreateListener(lateUpdate, self))
 end
 
 function update()
@@ -58,6 +56,11 @@ function update()
 	]]
 	roleManager:onUpdate()
 	sceneManager:onUpdate()
+end
+
+function lateUpdate()
+	roleManager:onLateUpdate()
+	sceneManager:onLateUpdate()
 end
 
 function fixedUpdate()
