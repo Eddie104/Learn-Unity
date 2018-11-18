@@ -5,7 +5,7 @@ local Role = class("Role", require("app.model.data.base.AnimationObject"))
 function Role:ctor()
     Role.super.ctor(self)
     -- 设置offsetX和offsetY，让角色正好可以站在格子里
-    self.offsetX, self.offsetY = 0, 33 -- 33 是通过 45 - CELL_SIZE / 4 算出来的
+    self.offsetX, self.offsetY = 0, 28 -- 28 是通过 40 - CELL_SIZE / 4 算出来的
     -- 添加组件
     require("app.model.data.component.CMovable")(self)
     require("app.model.data.component.CSorting")(self)
