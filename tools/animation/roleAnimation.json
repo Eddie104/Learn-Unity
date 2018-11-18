@@ -13,6 +13,19 @@
         ]
     },
     {
+        "name": "idle7",
+        "frames": [
+            {
+                "body": {
+                    "name": "7_01"
+                },
+                "hand": {
+                    "name": "7_hand_01"
+                }
+            }
+        ]
+    },
+    {
         "name": "walk3",
         "frames": [
             {
@@ -45,6 +58,43 @@
                 },
                 "hand": {
                     "name": "3_hand_01"
+                }
+            }
+        ]
+    },
+    {
+        "name": "walk7",
+        "frames": [
+            {
+                "body": {
+                    "name": "7_02"
+                },
+                "hand": {
+                    "name": "7_hand_02"
+                }
+            },
+            {
+                "body": {
+                    "name": "7_01"
+                },
+                "hand": {
+                    "name": "7_hand_01"
+                }
+            },
+            {
+                "body": {
+                    "name": "7_03"
+                },
+                "hand": {
+                    "name": "7_hand_03"
+                }
+            },
+            {
+                "body": {
+                    "name": "7_01"
+                },
+                "hand": {
+                    "name": "7_hand_01"
                 }
             }
         ]

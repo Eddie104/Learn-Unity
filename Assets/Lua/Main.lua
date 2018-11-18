@@ -1,6 +1,6 @@
 DATA_CONFIG_PACKAGE = 'app.config'
 -- 地图单元格的宽度
-CELL_SIZE = 0.48
+CELL_SIZE = 48
 -- 方向
 DIR = {
 	TOP = 0,
@@ -27,6 +27,8 @@ function Main()
 
 	-- 角色管理
 	roleManager = require("app.model.RoleManager").new()
+	-- 家具管理
+	furnitureManager = require("app.model.FurnitureManager").new()
 	-- 场景管理
 	sceneManager = require("app.model.SceneManager").new():init(1)
 	sceneManager:test()
@@ -66,6 +68,7 @@ end
 function fixedUpdate()
 	roleManager:onFixedUpdate()
 	sceneManager:onFixedUpdate()
+	sort45:sort()
 end
 
 --场景切换通知

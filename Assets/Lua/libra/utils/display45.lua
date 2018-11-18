@@ -12,6 +12,7 @@ function display45.getItemIndex(mouseX, mouseY, cellWidth, topPointX, topPointY)
 	mouseY = topPointY - mouseY
 	local row = (mouseY / (cellWidth / 2)) - (mouseX / cellWidth)
 	local col = (mouseX / cellWidth) + (mouseY / (cellWidth / 2))
+
 	row = row < 0 and -1 or row
 	col = col < 0 and -1 or col
 	return math.floor(row), math.floor(col)

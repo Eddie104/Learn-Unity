@@ -7,31 +7,23 @@ public class AesstBundle : MonoBehaviour {
     [MenuItem("Libra/Package AssetBundle(mac)")]
     private static void PackageBuddle()
     {
-        Debug.Log("<color=#FF0000>Packaging AssetBundle...</color>");
-        string abPath = Application.dataPath + "/AssetBundles";
-        if (Directory.Exists(abPath))
-            Directory.Delete(abPath, true);
-        Directory.CreateDirectory(abPath);
-        // if (!Directory.Exists (abPath)) {
-
-        // }
-        BuildPipeline.BuildAssetBundles(abPath, BuildAssetBundleOptions.None, BuildTarget.StandaloneOSX);
-        AssetDatabase.Refresh();
-        Debug.Log("<color=#FF0000>Packaging AssetBundle Done</color>");
+        PackageBuddle(BuildTarget.StandaloneOSX, false);
     }
 
     [MenuItem("Libra/Package AssetBundle(mac debug)")]
     private static void PackageBuddleDebug()
     {
+        PackageBuddle(BuildTarget.StandaloneOSX, true);
+    }
+
+    private static void PackageBuddle(BuildTarget buildTarget, bool debug)
+    {
         Debug.Log("<color=#FF0000>Packaging AssetBundle...</color>");
-        string abPath = Application.dataPath + "/StreamingAssets";
+        string abPath = Application.dataPath + (debug ? "/StreamingAssets" : "/AssetBundles");
         if (Directory.Exists(abPath))
             Directory.Delete(abPath, true);
         Directory.CreateDirectory(abPath);
-        // if (!Directory.Exists (abPath)) {
-
-        // }
-        BuildPipeline.BuildAssetBundles(abPath, BuildAssetBundleOptions.None, BuildTarget.StandaloneOSX);
+        BuildPipeline.BuildAssetBundles(abPath, BuildAssetBundleOptions.None, buildTarget);
         AssetDatabase.Refresh();
         Debug.Log("<color=#FF0000>Packaging AssetBundle Done</color>");
     }

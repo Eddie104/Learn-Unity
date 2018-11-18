@@ -12,7 +12,6 @@ function RoleManager:ctor()
 end
 
 function RoleManager:onUpdate()
-	-- logError('RoleManager update' .. Time.deltaTime)
 	for i, v in ipairs(self._dataList) do
 		v:onUpdate()
 	end

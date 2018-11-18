@@ -31,11 +31,14 @@ function SceneManager:init(sceneType)
     -- -- 房间容器，要参与排序的物品都放这一层
     -- -- -- 人物、动物、NPC、家具等等
     self._bgContainer = GameObject()
-    self._bgContainer.name = 'BgContainer'
+    self._bgContainer.name = 'FloorContainer'
     self._bgContainerTransform = self._bgContainer:GetComponent(typeof(Transform))
+    self._bgContainerTransform.localPosition = Vector3(0, 0, 100)
+
     self._roomContainer = GameObject()
     self._roomContainer.name = 'RoomContainer'
     self._roomContainerTransform = self._roomContainer:GetComponent(typeof(Transform))
+    self._roomContainerTransform.localPosition = Vector3(0, 0, 50)
     return self
 end
 
@@ -80,10 +83,15 @@ function SceneManager:test()
     end
 
     local rowArr = {
-        '1,0,0,1,1,1',
-        '1,1,0,0,0,1',
-        '1,1,0,1,1,1',
-        '1,1,1,1,0,1',
+        '1,0,0,1,1,1,1,0,0,1,1,1',
+        '1,1,0,0,0,1,1,1,0,0,0,1',
+        '1,0,0,1,1,1,1,0,0,1,1,1',
+        '1,1,1,1,0,1,1,1,1,1,0,1',
+        '1,1,1,1,0,1,1,1,1,1,0,1',
+        '1,1,1,1,0,1,1,1,1,1,0,1',
+        '1,1,1,1,0,1,1,1,1,1,0,1',
+        '1,1,1,1,0,1,1,1,1,1,0,1',
+        '1,1,1,1,0,1,1,1,1,1,0,1',
     }
     self._map = {}
     local toNumber = function (v) return checknumber(v) end
@@ -101,27 +109,26 @@ function SceneManager:test()
         for col, val in ipairs(rowData) do
             if self._map[row][col] == 1 then
                 Floor.new(getFloorCategory(row - 1, col - 1, self._map))
-                    :type(1):setRowAndCol(row - 1, col - 1)
+                    :type(1)
                     :addTo(self._bgContainerTransform)
+                    :setRowAndCol(row - 1, col - 1, true)
             end
         end
     end
     -- 加个角色
-    roleManager:addData(1, 2):addTo(self._roomContainerTransform):setRowAndCol(0, 0)
     self._role = roleManager:addData(1, 1):addTo(self._roomContainerTransform):setRowAndCol(1, 0)
+    -- self._role1 = roleManager:addData(1, 2):addTo(self._roomContainerTransform):setRowAndCol(0, 0)
+
+    -- 加几个家具
+    self._furniture = furnitureManager:addData(1, 1):addTo(self._roomContainerTransform):setRowAndCol(0, 0, true)
 end
 
 function SceneManager:onUpdate()
     if Input.GetMouseButtonUp(0) then
         local mouseV3 = Input.mousePosition
-        local row, col = display45.getItemIndex(mouseV3.x / 100, mouseV3.y / 100, CELL_SIZE, self.mapTopPointX, self.mapTopPointY)
-        logError('row = ' .. row .. ', col = ' .. col)
+        local row, col = display45.getItemIndex(mouseV3.x, mouseV3.y, CELL_SIZE, self.mapTopPointX, self.mapTopPointY)        
         local path = self._aStar:find(self._role:col() + 1, self._role:row() + 1, col + 1, row + 1)
         if path then
-            for node, count in path:nodes() do
-                print(('Step: %d - x: %d - y: %d'):format(count, node:getX(), node:getY()))
-                -- self._pathArr[count] = node
-            end
             self._role:startMove(path, function ()
                 print('walk done')
             end)

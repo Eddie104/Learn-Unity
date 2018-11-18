@@ -1,4 +1,4 @@
-local AnimationObject = class("AnimationObject", require("app.model.data.base.DisplayObject"))
+local AnimationObject = class("AnimationObject", require("app.model.data.base.MapObject"))
 
 function AnimationObject:ctor()
     AnimationObject.super.ctor(self)
@@ -32,6 +32,7 @@ function AnimationObject:play(animationName, loop)
                 self._loop = loop or 0
                 self._curLoop = 0
                 self._isPlaying = true
+                self:curFrame(1)
                 success = true
                 break
             end

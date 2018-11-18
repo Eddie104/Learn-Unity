@@ -2,9 +2,8 @@ local Body = class('Body', require('app.model.data.base.DisplayObject'))
 
 function Body:ctor(parent, sortingOrder)
     Body.super.ctor(self)
-
-    self._spriteRenderer.sortingLayerName = 'Role'
-    self._spriteRenderer.sortingOrder = sortingOrder or 0
+    self._spriteRenderer.sortingLayerName = 'Room'
+    -- self._spriteRenderer.sortingOrder = sortingOrder or 0
     self._transform = self._displayObject:GetComponent(typeof(Transform))
     self._transform:SetParent(parent)
 end

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3107810879
+CRC: 2666477253
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 55c0b0b9239125fb65b591f8cc37f199
+    Hash: 25782fbebd261208107d3e7405c51ad9
   TypeTreeHash:
     serializedVersion: 2
     Hash: ea5a42e0fd8ea905efa7aa926a3b8944
@@ -16,4 +16,5 @@ ClassTypes:
 Assets:
 - Assets/Imgs/Floor/001/floor_001.png
 - Assets/Imgs/Role/001/role_001.png
+- Assets/Imgs/Furniture/001/furni_001.png
 Dependencies: []

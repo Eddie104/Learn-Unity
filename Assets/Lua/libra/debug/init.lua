@@ -20,19 +20,35 @@ dump(t)
 
 ]]
 
-function logInfo(content)
+function logInfo(...)
+    content = ''
+    for i, v in ipairs(arg) do
+        content = string.format("%s %s", content, tostring(v))
+    end
     Helper.Info(content)
 end
 
-function logWarn(content)
+function logWarn(...)
+    content = ''
+    for i, v in ipairs(arg) do
+        content = string.format("%s %s", content, tostring(v))
+    end
     Helper.Warn(content)
 end
 
-function logDebug(content)
+function logDebug(...)
+    content = ''
+    for i, v in ipairs(arg) do
+        content = string.format("%s %s", content, tostring(v))
+    end
     Helper.Debug(content)
 end
 
-function logError(content)
+function logError(...)
+    content = ''
+    for i, v in ipairs(arg) do
+        content = string.format("%s %s", content, tostring(v))
+    end
     Helper.Error(content)
 end
 

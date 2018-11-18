@@ -22,14 +22,14 @@ def mk_dir(path):
 
 if __name__ == '__main__':
     # 先把下载好的json复制到项目目录下
-    # cfg_arr = ['furniture.json', 'mine.json', 'npc.json', 'scene.json', 'suit.json', 'item.json',
+    # cfg_arr = ['mine.json', 'npc.json', 'suit.json', 'item.json',
     #         'award.json', 'forest.json', 'publicScene.json', 'vehicle.json', 'terrain.json']
-    cfg_arr = ['scene.json']
+    cfg_arr = ['scene.json', 'furniture.json']
+    dir_name = os.path.join(res_root, 'doc', 'config')
+    mk_dir(dir_name)
     for cfg in cfg_arr:
         source_cfg_path = os.path.join(down_root, cfg)
         if os.path.exists(source_cfg_path):
-            dir_name = os.path.join(res_root, 'doc', 'config')
-            mk_dir(dir_name)
             target_file_path = os.path.join(dir_name, cfg)
             shutil.move(source_cfg_path, target_file_path)
     # 再生成lua

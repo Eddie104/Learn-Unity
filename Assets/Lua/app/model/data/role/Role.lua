@@ -5,12 +5,12 @@ local Role = class("Role", require("app.model.data.base.AnimationObject"))
 function Role:ctor()
     Role.super.ctor(self)
     -- 设置offsetX和offsetY，让角色正好可以站在格子里
-    self.offsetX, self.offsetY = 0, 0.3
+    self.offsetX, self.offsetY = 0, 33 -- 33 是通过 45 - CELL_SIZE / 4 算出来的
     -- 添加组件
-    require("app.model.data.component.CMapObject")(self)
-    require("app.model.data.component.CMovableObject")(self)
+    require("app.model.data.component.CMovable")(self)
+    require("app.model.data.component.CSorting")(self)
 
-    self._dir = -1
+    self._dir = DIR.LEFT_BOTTOM
 end
 
 function Role:init()
@@ -20,19 +20,55 @@ function Role:init()
         self._displayObject.name = 'Role'
         -- 拿到Transform组件
         self._transform = self._displayObject:GetComponent(typeof(Transform))
+        --[[
         -- 添加SpriteRenderer组件
         -- 角色还得加个SpriteRenderer组件，否则不能动态排序了。。。
         self._spriteRenderer = self._displayObject:AddComponent(typeof(SpriteRenderer))
+        ]]
         -- 初始化身体
         self._bodyDisplayObject = Body.new(self._transform, 10):name('Body')
         self._handDisplayObject = Body.new(self._transform, 20):name('Hand')
+
+        sort45:addItem(self, true)
     end
     return self
 end
 
 function Role:type(val)
-    self._animationFrameArr = require(string.format("app.config.roleAnimation_%03d", val))
-    self:play('idle3')
+    if val then
+        self._type = val
+        self._animationFrameArr = require(string.format("app.config.roleAnimation_%03d", val))
+        self._dir = DIR.RIGHT_BOTTOM
+        self:playIdle()
+        return self
+    end
+    return self._type
+end
+
+function Role:getAnimationDir()
+    local animationDir = self._dir
+    if self._dir == DIR.LEFT_BOTTOM then
+        self:flipX(false)
+    elseif self._dir == DIR.TOP_RIGHT then
+        self:flipX(false)
+    elseif self._dir == DIR.RIGHT_BOTTOM then
+        self:flipX(true)
+        animationDir = DIR.LEFT_BOTTOM
+    elseif self._dir == DIR.TOP_LEFT then
+        self:flipX(true)
+        animationDir = DIR.TOP_RIGHT
+    end
+    return animationDir
+end
+
+-- 待机
+function Role:playIdle()
+    self:play('idle' .. self:getAnimationDir())
+end
+
+-- 行走
+function Role:playWalk()
+    self:play('walk' .. self:getAnimationDir())
 end
 
 function Role:updateSprite()
@@ -42,7 +78,13 @@ function Role:updateSprite()
 end
 
 function Role:onFixedUpdate()
+    Role.super.onFixedUpdate(self)
     self:move()
+end
+
+function Role:dispose()
+    Role.super.dispose(self)
+    sort45:removeItem(self, true)
 end
 
 return Role

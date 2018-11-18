@@ -2,6 +2,7 @@ local DisplayObject = class("DisplayObject", require("libra.data.Object"))
 
 function DisplayObject:ctor()
     self._inited = false
+    self._flipX = false
     self:init()
 end
 
@@ -23,7 +24,7 @@ function DisplayObject:init()
         -- 添加SpriteRenderer组件
         self._spriteRenderer = self._displayObject:AddComponent(typeof(SpriteRenderer))
         -- 数据层的坐标
-        self.x, self.y = 0
+        self.x, self.y, self.z = 0, 0, 0
     end
     return self
 end
@@ -31,7 +32,7 @@ end
 function DisplayObject:x(val)
     if val then
         self.x = val
-        self._transform.localPosition = Vector2(keepTwoDecimalPlaces(val), localPosition.y)
+        self._transform.localPosition = Vector3(val, localPosition.y, self.z)
         return self
     end
     return self.x
@@ -40,31 +41,41 @@ end
 function DisplayObject:y(val)
     if val then
         self.y = val
-        self._transform.localPosition = Vector2(localPosition.x, keepTwoDecimalPlaces(val))
+        self.z = self.y
+        self._transform.localPosition = Vector3(localPosition.x, val, self.z)
         return self
     end
     return self.y
 end
 
-function DisplayObject:setXY(x, y)
-    if self.x ~= x and self.y ~= y then
-        self.x, self.y = x, y
-        x = x and keepTwoDecimalPlaces(x) or 0
-        y = y and keepTwoDecimalPlaces(y) or 0
-        self._transform.localPosition = Vector2(x, y)
+function DisplayObject:z(val)
+    if val then
+        self.z = val
+        self._transform.localPosition = Vector3(localPosition.x, localPosition.y, val)
+        return self
     end
+    return self.z
+end
+
+
+function DisplayObject:setXY(x, y)
+    self.x, self.y = x or 0, y or 0
+    self.z = self.y
+    self._transform.localPosition = Vector3(self.x, self.y, self.z)
     return self
 end
 
 function DisplayObject:getXY()
-    return self.x, self.y
+    local localPosition = self._transform.localPosition
+    return localPosition.x, localPosition.y
 end
 
 function DisplayObject:addXY(x, y)
+    x = x and x or 0
+    y = y and y or 0
     self.x, self.y = self.x + x, self.y + y
-    x = x and keepTwoDecimalPlaces(x) or 0
-    y = y and keepTwoDecimalPlaces(y) or 0
-    self._transform:Translate(Vector3(x, y))
+    self.z = self.y
+    self._transform:Translate(Vector3(x, y, 0))
     -- self._transform.position = self._transform.position + Vector3(x or 0, y or 0, 0)
     return self
 end
@@ -72,6 +83,17 @@ end
 function DisplayObject:addTo(parent)
     self._transform:SetParent(parent)
     return self
+end
+
+function DisplayObject:flipX(val)
+    if type(val) == 'boolean' then
+        -- self._spriteRenderer.flipX = val
+        self._flipX = val
+        self._transform.localScale = Vector3(val and -1 or 1, 1, 1)
+        return self
+    end
+    return self._flipX
+    -- return self._spriteRenderer.flipX
 end
 
 function DisplayObject:onUpdate()

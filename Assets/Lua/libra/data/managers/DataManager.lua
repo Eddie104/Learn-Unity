@@ -29,12 +29,14 @@ function DataManager:getDataListByType(type)
 	return list
 end
 
+function DataManager:createData(type, id)
+	return self:getDataType().new():type(type):id(id)
+end
+
 function DataManager:addData(type, id)
 	local data = self:getData(id)
 	if not data then
-		data = self:getDataType().new()
-		data:type(type)
-		data:id(id)
+		data = self:createData(type, id)
 		self._dataList[#self._dataList + 1] = data
 	end
 	return data
@@ -44,9 +46,7 @@ end
 function DataManager:insertData(type, id, pos)
 	local data = self:getData(id)
 	if not data then
-		data = self:getDataType().new()
-		data:type(type)
-		data:id(id)
+		data = self:createData(type, id)
 		table.insert(self._dataList, pos, data)
 	end
 	return data
@@ -60,17 +60,17 @@ function DataManager:updateData(id, otherProperty, data)
 			if type(data[k]) == "function" then
 				data[k](data, v)
 			else
-				logger:warn(string.format("%s has no property:%s, value:%s", data.__cname, k, tostring(v)))
+				logWarn(string.format("%s has no property:%s, value:%s", data.__cname, k, tostring(v)))
 				hasWarn = true
 			end
 		end
 		if hasWarn then
-			logger:info("=====================================================================")
+			logWarn("=====================================================================")
 		end
 		if data.count and type(data.count) == "function" then
 			if data:count() < 1 then
 				self:removeData(data:id())
-				logger:info(data:id(), data:name(), "被删除")
+				logWarn(data:id(), data:name(), "被删除")
 			end
 		end
 	else
@@ -84,6 +84,7 @@ function DataManager:removeData(id)
 	for i, v in ipairs(self._dataList) do
 		if v:id() == id then
 			table.remove(self._dataList, i)
+			v:dispose()
 			return v, i
 		end
 	end
