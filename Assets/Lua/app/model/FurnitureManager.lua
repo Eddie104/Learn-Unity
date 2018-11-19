@@ -11,6 +11,14 @@ function FurnitureManager:ctor()
 	FurnitureManager.super.ctor(self)
 end
 
+function FurnitureManager:getDataByCollider(collider)
+	for i, v in ipairs(self._dataList) do
+		if v:getBoxCollider() == collider then
+			return v
+		end
+	end
+end
+
 function FurnitureManager:onUpdate()
 	for i, v in ipairs(self._dataList) do
 		v:onUpdate()

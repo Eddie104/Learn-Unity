@@ -134,28 +134,39 @@ end
 
 function SceneManager:onUpdate()
     if Input.GetMouseButtonUp(0) then
-
         local mousePosition = Input.mousePosition
         local ray = Camera.main:ScreenPointToRay(mousePosition)
-        -- Physics.RaycastAll
-		local flag, hit = UnityEngine.Physics.Raycast(ray, RaycastHit.out)
-		if flag then
-			print('mouse down => ' .. tostring(hit.point))
-		else
-			print('nonono')
-		end
-
-
-        -- local position = self._cameraTransform.position
-        -- local row, col = display45.getItemIndex(mousePosition.x - display.cx + position.x, mousePosition.y - display.cy + position.y, CELL_SIZE, self.mapTopPointX, self.mapTopPointY)
-        -- local path = self._aStar:find(self._role:col() + 1, self._role:row() + 1, col + 1, row + 1)
-        -- if path then
-        --     self._role:startMove(path, function ()
-        --         print('walk done')
-        --     end)
-        -- else
-        --     print('no way')
-        -- end
+        -- local flag, hit = UnityEngine.Physics.Raycast(ray, RaycastHit.out, 1000)
+        -- if flag then
+		-- 	print('mouse down => ' .. tostring(hit.point))
+		-- else
+		-- 	print('nonono')
+		-- end
+        local hitArr = UnityEngine.Physics.RaycastAll(ray)
+        local f, p
+        for i = 0, hitArr.Length - 1 do
+            f = furnitureManager:getDataByCollider(hitArr[i].collider)
+            if f then
+                p = hitArr[i].point
+                if f:checkTouch(p) then
+                    logInfo(f:name(), '被点击了')
+                    break
+                end
+            end
+        end
+        if not f then
+            -- 没有点到家具，那么就看看能不能行走吧
+            local position = self._cameraTransform.position
+            local row, col = display45.getItemIndex(mousePosition.x - display.cx + position.x, mousePosition.y - display.cy + position.y, CELL_SIZE, self.mapTopPointX, self.mapTopPointY)
+            local path = self._aStar:find(self._role:col() + 1, self._role:row() + 1, col + 1, row + 1)
+            if path then
+                self._role:startMove(path, function ()
+                    print('walk done')
+                end)
+            else
+                print('no way')
+            end
+        end
     end
 end
 

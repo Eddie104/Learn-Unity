@@ -87,6 +87,24 @@ function Furniture:type(val)
 		self._cols3 = underside[1] and #underside[1] or 0
 		self._rows5 = self._cols3
         self._cols5 = self._rows3
+        -- 触摸点范围
+        self._touchArea3 = self._cfg.touch_area_3 or {}
+        self._touchArea7 = self._cfg.touch_area_7 or {}
+        local size = self._cfg.size
+		self._touchArea5 = {}
+		for i, v in ipairs(self._touchArea3) do
+			self._touchArea5[i] = {
+				x = size.width - v.x,
+				y = v.y
+			}
+		end
+		self._touchArea1 = {}
+		for i, v in ipairs(self._touchArea7) do
+			self._touchArea1[i] = {
+				x = size.width - v.x,
+				y = v.y
+			}
+		end
         return self
     end
     return self._type
@@ -95,6 +113,28 @@ end
 -- 是否占地
 function Furniture:isCovered()
     return self._cfg.is_covered
+end
+
+function Furniture:checkTouch(v3)
+    -- 获取触摸范围
+    local touchArea
+    if self._dir == DIR.LEFT_BOTTOM then
+        touchArea = self._touchArea3
+    elseif self._dir == DIR.LEFT_TOP then
+        touchArea = self._touchArea1
+    elseif self._dir == DIR.RIGHT_TOP then
+        touchArea = self._touchArea7
+    elseif self._dir == DIR.RIGHT_BOTTOM then
+        touchArea = self._touchArea5
+    end
+    if touchArea then
+        if #touchArea > 0 then
+            local size = self._cfg.size
+            local x, y = v3.x - (self._x - size.width / 2), size.height / 2 - self._y + v3.y
+            return pointInRegion(x, y, touchArea)
+        end
+    end
+    return true
 end
 
 -- 重写setRowAndCol方法
@@ -160,6 +200,10 @@ function Furniture:updateSprite()
             self._boxCollider = self._displayObject:AddComponent(typeof(BoxCollider))
         end
     end
+end
+
+function Furniture:getBoxCollider()
+    return self._boxCollider
 end
 
 -- 获取互动点信息
