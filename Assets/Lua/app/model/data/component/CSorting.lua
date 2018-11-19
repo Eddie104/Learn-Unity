@@ -1,6 +1,7 @@
 return function (obj)
     obj._rows, obj._cols = 1, 1
     obj._zorderType = 1
+    obj._bottomRows, obj._bottomCols = 0, 0
 
     obj.rows = function (self, val)
         if val then
@@ -19,35 +20,19 @@ return function (obj)
     end
 
     obj.topCol = function (self, val)
-        if val then
-            self._topCol = val
-            return self
-        end
-        return self._topCol
+        return self:col(val)
     end
 
     obj.topRow = function (self, val)
-        if val then
-            self._topRow = val
-            return self
-        end
-        return self._topRow
+        return self:row(val)
     end
 
-    obj.bottomCol = function (self, val)
-        if val then
-            self._bottomCol = val
-            return self
-        end
-        return self._bottomCol
+    obj.bottomCol = function (self)
+        return self._bottomCols + self._col
     end
 
-    obj.bottomRow = function (self, val)
-        if val then
-            self._bottomRow = val
-            return self
-        end
-        return self._bottomRow
+    obj.bottomRow = function (self)
+        return self._bottomRows + self._row
     end
 
     obj.zorderType = function (self, val)

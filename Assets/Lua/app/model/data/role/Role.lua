@@ -17,7 +17,7 @@ function Role:init()
     if not self._inited then
         self._inited = true
         self._displayObject = GameObject()
-        self._displayObject.name = 'Role'
+        self:name('Role')
         -- 拿到Transform组件
         self._transform = self._displayObject:GetComponent(typeof(Transform))
         --[[
@@ -39,7 +39,6 @@ function Role:type(val)
         self._type = val
         self._animationFrameArr = require(string.format("app.config.roleAnimation_%03d", val))
         self._dir = DIR.RIGHT_BOTTOM
-        self:playIdle()
         return self
     end
     return self._type
@@ -64,11 +63,13 @@ end
 -- 待机
 function Role:playIdle()
     self:play('idle' .. self:getAnimationDir())
+    return self
 end
 
 -- 行走
 function Role:playWalk()
     self:play('walk' .. self:getAnimationDir())
+    return self
 end
 
 function Role:updateSprite()

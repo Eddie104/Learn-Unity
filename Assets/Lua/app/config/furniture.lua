@@ -10,6 +10,11 @@ return {
 			}
 		},
 		id = 1,
+		size = 
+		{
+			width = 32,
+			height = 56
+		},
 		functions = {
 			
 			{
@@ -135,6 +140,11 @@ return {
 			}
 		},
 		id = 2,
+		size = 
+		{
+			width = 84,
+			height = 62
+		},
 		functions = {
 			
 		},
@@ -175,6 +185,11 @@ return {
 			}
 		},
 		id = 3,
+		size = 
+		{
+			width = 74,
+			height = 62
+		},
 		functions = {
 			
 		},
@@ -213,6 +228,11 @@ return {
 			}
 		},
 		id = 4,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 			{
@@ -290,6 +310,11 @@ return {
 			}
 		},
 		id = 5,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 			{
@@ -367,6 +392,11 @@ return {
 			}
 		},
 		id = 6,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 			{
@@ -444,6 +474,11 @@ return {
 			}
 		},
 		id = 7,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 			{
@@ -519,6 +554,11 @@ return {
 			
 		},
 		id = 8,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 		},
@@ -559,6 +599,11 @@ return {
 			}
 		},
 		id = 9,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 		},
@@ -672,6 +717,11 @@ return {
 			}
 		},
 		id = 10,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 			{
@@ -749,6 +799,11 @@ return {
 			}
 		},
 		id = 11,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 			{
@@ -797,6 +852,11 @@ return {
 			}
 		},
 		id = 12,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 			{
@@ -874,6 +934,11 @@ return {
 			}
 		},
 		id = 13,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 			{
@@ -951,6 +1016,11 @@ return {
 			}
 		},
 		id = 14,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 			{
@@ -1028,6 +1098,11 @@ return {
 			}
 		},
 		id = 15,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 			{
@@ -1105,6 +1180,11 @@ return {
 			}
 		},
 		id = 16,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 			{
@@ -1294,6 +1374,11 @@ return {
 			}
 		},
 		id = 17,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 			{
@@ -1488,6 +1573,11 @@ return {
 			}
 		},
 		id = 18,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 			{
@@ -1563,6 +1653,11 @@ return {
 			}
 		},
 		id = 19,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 			{
@@ -1640,6 +1735,11 @@ return {
 			}
 		},
 		id = 20,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 			{
@@ -1658,14 +1758,14 @@ return {
 		interaction_point = {
 			
 		},
-		touch_area_3 = {
-			
-		},
+		name = '抽树脂的桶',
 		touch_area_7 = {
 			
 		},
 		animation_auto_play = false,
-		name = '抽树脂的桶',
+		touch_area_3 = {
+			
+		},
 		des = '',
 		animation_total_frame = 1,
 		is_covered = true,
@@ -1682,6 +1782,11 @@ return {
 			}
 		},
 		id = 21,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 		},
@@ -1696,14 +1801,14 @@ return {
 		interaction_point = {
 			
 		},
-		touch_area_3 = {
-			
-		},
+		name = '农场地板',
 		touch_area_7 = {
 			
 		},
 		animation_auto_play = false,
-		name = '农场地板',
+		touch_area_3 = {
+			
+		},
 		des = '',
 		animation_total_frame = 1,
 		is_covered = false,
@@ -1728,6 +1833,11 @@ return {
 			}
 		},
 		id = 22,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 		},
@@ -1742,14 +1852,14 @@ return {
 		interaction_point = {
 			
 		},
-		touch_area_3 = {
-			
-		},
+		name = '农场房子',
 		touch_area_7 = {
 			
 		},
 		animation_auto_play = false,
-		name = '农场房子',
+		touch_area_3 = {
+			
+		},
 		des = '',
 		animation_total_frame = 1,
 		is_covered = true,
@@ -1768,6 +1878,11 @@ return {
 			}
 		},
 		id = 23,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 			{
@@ -1826,14 +1941,14 @@ return {
 
 			}
 		},
-		touch_area_3 = {
-			
-		},
+		name = '水井',
 		touch_area_7 = {
 			
 		},
 		animation_auto_play = false,
-		name = '水井',
+		touch_area_3 = {
+			
+		},
 		des = '',
 		animation_total_frame = 1,
 		is_covered = true,
@@ -1852,6 +1967,11 @@ return {
 			}
 		},
 		id = 24,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 		},
@@ -1866,14 +1986,14 @@ return {
 		interaction_point = {
 			
 		},
-		touch_area_3 = {
-			
-		},
+		name = '泥泞小道',
 		touch_area_7 = {
 			
 		},
 		animation_auto_play = false,
-		name = '泥泞小道',
+		touch_area_3 = {
+			
+		},
 		des = '',
 		animation_total_frame = 1,
 		is_covered = false,
@@ -1890,6 +2010,11 @@ return {
 			}
 		},
 		id = 25,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 		},
@@ -1904,6 +2029,11 @@ return {
 		interaction_point = {
 			
 		},
+		name = '农场围栏',
+		touch_area_7 = {
+			
+		},
+		animation_auto_play = false,
 		touch_area_3 = {
 			
 			{
@@ -1962,11 +2092,6 @@ return {
 
 			}
 		},
-		touch_area_7 = {
-			
-		},
-		animation_auto_play = false,
-		name = '农场围栏',
 		des = '',
 		animation_total_frame = 1,
 		is_covered = true,
@@ -1983,6 +2108,11 @@ return {
 			}
 		},
 		id = 26,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 			{
@@ -2022,6 +2152,11 @@ return {
 
 			}
 		},
+		name = '土地',
+		touch_area_7 = {
+			
+		},
+		animation_auto_play = false,
 		touch_area_3 = {
 			
 			{
@@ -2045,11 +2180,6 @@ return {
 
 			}
 		},
-		touch_area_7 = {
-			
-		},
-		animation_auto_play = false,
-		name = '土地',
 		des = '',
 		animation_total_frame = 1,
 		is_covered = false,
@@ -2066,6 +2196,11 @@ return {
 			}
 		},
 		id = 27,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 			{
@@ -2130,6 +2265,11 @@ return {
 
 			}
 		},
+		name = '胡萝卜',
+		touch_area_7 = {
+			
+		},
+		animation_auto_play = false,
 		touch_area_3 = {
 			
 			{
@@ -2168,11 +2308,6 @@ return {
 
 			}
 		},
-		touch_area_7 = {
-			
-		},
-		animation_auto_play = false,
-		name = '胡萝卜',
 		des = '拔呀拔呀拔萝卜',
 		animation_total_frame = 1,
 		is_covered = true,
@@ -2195,6 +2330,11 @@ return {
 			}
 		},
 		id = 28,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 		},
@@ -2214,6 +2354,11 @@ return {
 
 			}
 		},
+		name = '鸡窝',
+		touch_area_7 = {
+			
+		},
+		animation_auto_play = false,
 		touch_area_3 = {
 			
 			{
@@ -2302,11 +2447,6 @@ return {
 
 			}
 		},
-		touch_area_7 = {
-			
-		},
-		animation_auto_play = false,
-		name = '鸡窝',
 		des = '',
 		animation_total_frame = 1,
 		is_covered = true,
@@ -2323,6 +2463,11 @@ return {
 			}
 		},
 		id = 29,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 		},
@@ -2357,14 +2502,14 @@ return {
 
 			}
 		},
-		touch_area_3 = {
-			
-		},
+		name = '鸡蛋',
 		touch_area_7 = {
 			
 		},
 		animation_auto_play = false,
-		name = '鸡蛋',
+		touch_area_3 = {
+			
+		},
 		des = '',
 		animation_total_frame = 1,
 		is_covered = true,
@@ -2381,6 +2526,11 @@ return {
 			}
 		},
 		id = 30,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 		},
@@ -2435,6 +2585,11 @@ return {
 
 			}
 		},
+		name = '饲料槽',
+		touch_area_7 = {
+			
+		},
+		animation_auto_play = false,
 		touch_area_3 = {
 			
 			{
@@ -2468,11 +2623,6 @@ return {
 
 			}
 		},
-		touch_area_7 = {
-			
-		},
-		animation_auto_play = false,
-		name = '饲料槽',
 		des = '',
 		animation_total_frame = 1,
 		is_covered = true,
@@ -2489,6 +2639,11 @@ return {
 			}
 		},
 		id = 31,
+		size = 
+		{
+			width = 0,
+			height = 0
+		},
 		functions = {
 			
 		},
@@ -2523,6 +2678,11 @@ return {
 
 			}
 		},
+		name = '栅栏门',
+		touch_area_7 = {
+			
+		},
+		animation_auto_play = true,
 		touch_area_3 = {
 			
 			{
@@ -2561,11 +2721,6 @@ return {
 
 			}
 		},
-		touch_area_7 = {
-			
-		},
-		animation_auto_play = true,
-		name = '栅栏门',
 		des = '',
 		animation_total_frame = 1,
 		is_covered = true,

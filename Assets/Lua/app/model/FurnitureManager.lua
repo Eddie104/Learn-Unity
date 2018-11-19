@@ -3,7 +3,7 @@
 -- Date: 2018-11-08 17:59:01
 --
 
-local Furniture = require("app.model.data.Furniture")
+local Furniture = require("app.model.data.furniture.Furniture")
 
 local FurnitureManager = class("FurnitureManager", require('libra.data.managers.DataManager'))
 

@@ -109,4 +109,10 @@ function DataManager:getDataType()
 	return require("libra.data.Object")
 end
 
+function DataManager:onUpdate() end
+
+function DataManager:onLateUpdate() end
+
+function DataManager:onFixedUpdate() end
+
 return DataManager

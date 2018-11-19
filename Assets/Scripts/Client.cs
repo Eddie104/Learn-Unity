@@ -19,8 +19,9 @@ public class Client : LuaClient {
             orthographicSize = devWidth / (2 * aspectRatio);
             Camera.main.orthographicSize = orthographicSize;
         }
+        Camera.main.farClipPlane = 20000;
         // 让摄像机位于场景的右上角，这样看到的场景的(0，0)点就在左下角
-        Camera.main.transform.position = new Vector3 (devWidth / 2, devHeight / 2, -1.0f);
+        Camera.main.transform.position = new Vector3 (devWidth / 2, devHeight / 2, -10000.0f);
     }
 
     protected override void Init () {

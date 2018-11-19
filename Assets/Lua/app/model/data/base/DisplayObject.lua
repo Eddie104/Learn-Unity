@@ -24,15 +24,15 @@ function DisplayObject:init()
         -- 添加SpriteRenderer组件
         self._spriteRenderer = self._displayObject:AddComponent(typeof(SpriteRenderer))
         -- 数据层的坐标
-        self.x, self.y, self.z = 0, 0, 0
+        self._x, self._y, self._z = 0, 0, 0
     end
     return self
 end
 
 function DisplayObject:x(val)
     if val then
-        self.x = val
-        self._transform.localPosition = Vector3(val, localPosition.y, self.z)
+        self._x = val
+        self._transform.localPosition = Vector3(val, self._y, self._z)
         return self
     end
     return self.x
@@ -40,28 +40,26 @@ end
 
 function DisplayObject:y(val)
     if val then
-        self.y = val
-        self.z = self.y
-        self._transform.localPosition = Vector3(localPosition.x, val, self.z)
+        self._y = val
+        self._transform.localPosition = Vector3(self._x, val, self._z)
         return self
     end
-    return self.y
+    return self._y
 end
 
 function DisplayObject:z(val)
     if val then
-        self.z = val
-        self._transform.localPosition = Vector3(localPosition.x, localPosition.y, val)
+        self._z = val
+        self._transform.localPosition = Vector3(self._x, self._y, val)
         return self
     end
-    return self.z
+    return self._z
 end
 
 
 function DisplayObject:setXY(x, y)
-    self.x, self.y = x or 0, y or 0
-    self.z = self.y
-    self._transform.localPosition = Vector3(self.x, self.y, self.z)
+    self._x, self._y = x or 0, y or 0
+    self._transform.localPosition = Vector3(self._x, self._y, self._z)
     return self
 end
 
@@ -73,9 +71,8 @@ end
 function DisplayObject:addXY(x, y)
     x = x and x or 0
     y = y and y or 0
-    self.x, self.y = self.x + x, self.y + y
-    self.z = self.y
-    self._transform:Translate(Vector3(x, y, 0))
+    self._x, self._y = self._x + x, self._y + y
+    self._transform:Translate(Vector2(x, y))
     -- self._transform.position = self._transform.position + Vector3(x or 0, y or 0, 0)
     return self
 end
@@ -89,23 +86,17 @@ function DisplayObject:flipX(val)
     if type(val) == 'boolean' then
         -- self._spriteRenderer.flipX = val
         self._flipX = val
-        self._transform.localScale = Vector3(val and -1 or 1, 1, 1)
+        self._transform.localScale = Vector2(val and -1 or 1, 1)
         return self
     end
     return self._flipX
     -- return self._spriteRenderer.flipX
 end
 
-function DisplayObject:onUpdate()
-    -- body
-end
+function DisplayObject:onUpdate() end
 
-function DisplayObject:onLateUpdate()
-    -- body
-end
+function DisplayObject:onLateUpdate() end
 
-function DisplayObject:onFixedUpdate()
-    -- body
-end
+function DisplayObject:onFixedUpdate() end
 
 return DisplayObject

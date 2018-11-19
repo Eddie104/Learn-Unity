@@ -14,35 +14,6 @@ end
 
 function SceneManager:init(sceneType)
     -- 先初始化数据
-    self._cfg = getConfig(sceneType, 'scene')
-    self._cfg.mapData = Helper.DecodeBase64(self._cfg.mapData)
-    local rowArr = string.split(self._cfg.mapData, '&')
-    self._map = {}
-    for row, v in ipairs(rowArr) do
-        self._map[row] = string.split(v, ',')
-    end
-    self._row = #rowArr
-    self._col = #self._map[1]
-    self._mapWidth = CELL_SIZE / 2 * (self._row + self._col)
-    self._mapHeight = self._mapWidth / 2
-    -- 场景本身是最外面的容器，其中包括了
-    -- -- 背景容器
-    -- -- -- 背景图、地板、墙纸、挂饰
-    -- -- 房间容器，要参与排序的物品都放这一层
-    -- -- -- 人物、动物、NPC、家具等等
-    self._bgContainer = GameObject()
-    self._bgContainer.name = 'FloorContainer'
-    self._bgContainerTransform = self._bgContainer:GetComponent(typeof(Transform))
-    self._bgContainerTransform.localPosition = Vector3(0, 0, 100)
-
-    self._roomContainer = GameObject()
-    self._roomContainer.name = 'RoomContainer'
-    self._roomContainerTransform = self._roomContainer:GetComponent(typeof(Transform))
-    self._roomContainerTransform.localPosition = Vector3(0, 0, 50)
-    return self
-end
-
-function SceneManager:test()
     -- 根据地图索引获取地板应该用哪张图
     local function getFloorCategory(row, col, map)
         --[[
@@ -81,53 +52,38 @@ function SceneManager:test()
         end
         return 5
     end
-
-    local rowArr = {
-        '1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1',
-        '1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1',
-        '1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1',
-        '1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1',
-        '1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1',
-        '1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1',
-        '1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1',
-        '1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1',
-        '1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-        '1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1',
-    }
+    self._cfg = getConfig(sceneType, 'scene')
+    -- 初始化地图
+    self._cfg.mapData = Helper.DecodeBase64(self._cfg.mapData)
+    local rowArr = string.split(self._cfg.mapData, '&')
     self._map = {}
     local toNumber = function (v) return checknumber(v) end
     for row, v in ipairs(rowArr) do
         self._map[row] = string.split(v, ',')
         table.map(self._map[row], toNumber)
     end
+    self._row = #rowArr
+    self._col = #self._map[1]
+    self._mapWidth = CELL_SIZE / 2 * (self._row + self._col)
+    self._mapHeight = self._mapWidth / 2
     -- 初始化a*
     self._aStar = AStar.new(self._map, 1)
+
+    -- 场景本身是最外面的容器，其中包括了
+    -- -- 背景容器
+    -- -- -- 背景图、地板、墙纸、挂饰
+    -- -- 房间容器，要参与排序的物品都放这一层
+    -- -- -- 人物、动物、NPC、家具等等
+    self._bgContainer = GameObject()
+    self._bgContainer.name = 'FloorContainer'
+    self._bgContainerTransform = self._bgContainer:GetComponent(typeof(Transform))
+    self._bgContainerTransform.localPosition = Vector3(0, 0, 100)
+
+    self._roomContainer = GameObject()
+    self._roomContainer.name = 'RoomContainer'
+    self._roomContainerTransform = self._roomContainer:GetComponent(typeof(Transform))
+    self._roomContainerTransform.localPosition = Vector3(0, 0, 50)
+    -- 生成地图
     self._row = #rowArr
     self._col = #self._map[1]
     self._mapWidth = CELL_SIZE / 2 * (self._row + self._col)
@@ -144,11 +100,36 @@ function SceneManager:test()
         end
     end
     -- 加个角色
-    self._role = roleManager:addData(1, 1):addTo(self._roomContainerTransform):setRowAndCol(1, 0)
-    -- self._role1 = roleManager:addData(1, 2):addTo(self._roomContainerTransform):setRowAndCol(0, 0)
+    local enterData = self._cfg.enterData
+    self._role = roleManager:addData(1, 1)
+        :addTo(self._roomContainerTransform)
+        :setRowAndCol(enterData.row, enterData.col)
+        :dir(enterData.dir)
+        :playIdle()
 
     -- 加几个家具
-    -- self._furniture = furnitureManager:addData(1, 1):addTo(self._roomContainerTransform):setRowAndCol(0, 0, true)
+    self:createFurniture(1, 10, 15, 20, DIR.LEFT_BOTTOM)
+    self:createFurniture(1, 20, 17, 21, DIR.LEFT_TOP)
+    self:createFurniture(1, 30, 19, 20, DIR.RIGHT_TOP)
+    self:createFurniture(2, 100, 17, 16, DIR.RIGHT_BOTTOM)
+    return self
+end
+
+function SceneManager:createFurniture(type, id, row, col, dir)
+    local f = furnitureManager:addData(type, id)
+        :addTo(self._roomContainerTransform)
+        :row(row):col(col):dir(dir)
+    if f:isCovered() then
+        -- 如果占地，需要修改地图信息
+		for c = f:topCol(), f:bottomCol() do
+            for r = f:topRow(), f:bottomRow() do
+				self._aStar:setWalkableAt(c + 1, r + 1, 0)
+			end
+		end
+    end
+    -- 添加到排序队列中
+    sort45:addItem(f, false)
+    return f
 end
 
 function SceneManager:onUpdate()

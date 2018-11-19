@@ -97,11 +97,11 @@ function sort45:sort()
 	l = #list
 	counter = 1
 	local displayObject = nil
-	-- while counter <= l do
-	-- 	displayObject = list[counter]
-	-- 	displayObject:zorder(counter)
-	-- 	counter = counter + 1
-	-- end
+	while counter <= l do
+		displayObject = list[counter]
+		displayObject:z(-counter)
+		counter = counter + 1
+	end
 end
 
 function sort45:addItem(item, isMoveable)

@@ -30,8 +30,9 @@ function Main()
 	-- 家具管理
 	furnitureManager = require("app.model.FurnitureManager").new()
 	-- 场景管理
-	sceneManager = require("app.model.SceneManager").new():init(1)
-	sceneManager:test()
+	sceneManager = require("app.model.SceneManager").new()
+	-- TODO 测试，先写死，10是农场
+	sceneManager:init(10)
 
 	-- update事件监听
 	UpdateBeat:AddListener(UpdateBeat:CreateListener(update, self))
@@ -56,18 +57,21 @@ function update()
 		-- end
 	end
 	]]
-	roleManager:onUpdate()
 	sceneManager:onUpdate()
+	roleManager:onUpdate()
+	furnitureManager:onUpdate()
 end
 
 function lateUpdate()
-	roleManager:onLateUpdate()
 	sceneManager:onLateUpdate()
+	roleManager:onLateUpdate()
+	furnitureManager:onLateUpdate()
 end
 
 function fixedUpdate()
-	roleManager:onFixedUpdate()
 	sceneManager:onFixedUpdate()
+	roleManager:onFixedUpdate()
+	furnitureManager:onFixedUpdate()
 	sort45:sort()
 end
 
