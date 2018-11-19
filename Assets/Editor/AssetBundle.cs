@@ -11,9 +11,15 @@ public class AesstBundle : MonoBehaviour {
     }
 
     [MenuItem("Libra/Package AssetBundle(mac debug)")]
-    private static void PackageBuddleDebug()
+    private static void PackageBuddleMacDebug()
     {
         PackageBuddle(BuildTarget.StandaloneOSX, true);
+    }
+
+    [MenuItem("Libra/Package AssetBundle(android debug)")]
+    private static void PackageBuddleAndroidDebug()
+    {
+        PackageBuddle(BuildTarget.Android, true);
     }
 
     private static void PackageBuddle(BuildTarget buildTarget, bool debug)

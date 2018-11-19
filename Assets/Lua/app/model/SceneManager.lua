@@ -93,7 +93,8 @@ function SceneManager:init(sceneType)
         for col, val in ipairs(rowData) do
             if self._map[row][col] == 1 then
                 Floor.new(getFloorCategory(row - 1, col - 1, self._map))
-                    :type(1)
+                    -- TODO 临时值
+                    :type(11)
                     :addTo(self._bgContainerTransform)
                     :setRowAndCol(row - 1, col - 1, true)
             end

@@ -120,6 +120,7 @@ public static void ShowWindow()
         ti.spriteImportMode = SpriteImportMode.Multiple;
         ti.spritePixelsPerUnit = 1;
         ti.filterMode = FilterMode.Point;
+        ti.textureCompression = TextureImporterCompression.Uncompressed;
         ti.spritesheet = sps.ToArray();
 
         AssetDatabase.ImportAsset(_texPath, ImportAssetOptions.ForceUncompressedImport);

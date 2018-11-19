@@ -16,7 +16,7 @@ function Floor:type(val)
     if val then
         self._type = val
         local typeStr = string.format('floor_%03d', val)
-        self._spriteRenderer.sprite = spritePool.get('test', typeStr, string.format('%s_%d', typeStr, self._category))
+        self._spriteRenderer.sprite = spritePool.get('test', 'floor', string.format('%s_%d', typeStr, self._category))
         return self
     end
     return self._type
