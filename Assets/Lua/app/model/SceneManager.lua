@@ -134,17 +134,28 @@ end
 
 function SceneManager:onUpdate()
     if Input.GetMouseButtonUp(0) then
-        local mouseV3 = Input.mousePosition
-        local position = self._cameraTransform.position
-        local row, col = display45.getItemIndex(mouseV3.x - display.cx + position.x, mouseV3.y - display.cy + position.y, CELL_SIZE, self.mapTopPointX, self.mapTopPointY)
-        local path = self._aStar:find(self._role:col() + 1, self._role:row() + 1, col + 1, row + 1)
-        if path then
-            self._role:startMove(path, function ()
-                print('walk done')
-            end)
-        else
-            print('no way')
-        end
+
+        local mousePosition = Input.mousePosition
+        local ray = Camera.main:ScreenPointToRay(mousePosition)
+        -- Physics.RaycastAll
+		local flag, hit = UnityEngine.Physics.Raycast(ray, RaycastHit.out)
+		if flag then
+			print('mouse down => ' .. tostring(hit.point))
+		else
+			print('nonono')
+		end
+
+
+        -- local position = self._cameraTransform.position
+        -- local row, col = display45.getItemIndex(mousePosition.x - display.cx + position.x, mousePosition.y - display.cy + position.y, CELL_SIZE, self.mapTopPointX, self.mapTopPointY)
+        -- local path = self._aStar:find(self._role:col() + 1, self._role:row() + 1, col + 1, row + 1)
+        -- if path then
+        --     self._role:startMove(path, function ()
+        --         print('walk done')
+        --     end)
+        -- else
+        --     print('no way')
+        -- end
     end
 end
 

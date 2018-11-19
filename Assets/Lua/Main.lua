@@ -41,22 +41,6 @@ function Main()
 end
 
 function update()
-	--[[
-	-- 检测鼠标左键是否点击
-	if Input.GetMouseButtonDown(0) then
-		-- local mousePosition = Input.mousePosition
-		-- print(tostring(mousePosition))
-		-- local ray = Camera.main:ScreenPointToRay(mousePosition);
-		-- local flag, hit = UnityEngine.Physics.Raycast(ray, RaycastHit.out)
-		-- print(tostring(flag))
-		-- dump(hit)
-		-- if flag then
-		-- 	print('mouse down => ' .. tostring(hit.point))
-		-- else
-		-- 	print('nonono')
-		-- end
-	end
-	]]
 	sceneManager:onUpdate()
 	roleManager:onUpdate()
 	furnitureManager:onUpdate()

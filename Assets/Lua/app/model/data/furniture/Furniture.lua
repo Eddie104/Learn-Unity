@@ -80,12 +80,13 @@ function Furniture:type(val)
         ]]
         self._cfg = getConfig(val, 'furniture')
         self:name(self._cfg.name)
+        self._zorderType = self._cfg.zorder_type
         -- 处理底面占地数据
         local underside = self._cfg.underside
         self._rows3 = #underside
 		self._cols3 = underside[1] and #underside[1] or 0
 		self._rows5 = self._cols3
-		self._cols5 = self._rows3
+        self._cols5 = self._rows3
         return self
     end
     return self._type
@@ -95,13 +96,6 @@ end
 function Furniture:isCovered()
     return self._cfg.is_covered
 end
-
--- function Furniture:offset()
---     if self._dir == DIR.LEFT_BOTTOM then
---         return self._cfg.offsetX3, self._cfg.offsetY3
---     end
---     return 0, 0
--- end
 
 -- 重写setRowAndCol方法
 function Furniture:setRowAndCol(row, col, force)
@@ -143,7 +137,6 @@ function Furniture:dir(val)
             -- 更新图片
             self:updateSprite()
             -- 更新位置
-            -- self.offsetX, self.offsetY = self:offset()
             self:setRowAndCol(self._row, self._col, true)
         end
         return self
@@ -160,6 +153,37 @@ function Furniture:updateSprite()
         dir = DIR.RIGHT_TOP
     end
     self._spriteRenderer.sprite = spritePool.get('test', typeStr, string.format('%s_%d_1', typeStr, dir))
+    -- 试图增加碰撞体组件
+    if self._cfg.is_touch_able then
+        if not self._boxCollider then
+            -- 可以几点的家具需要添加一个碰撞体组件
+            self._boxCollider = self._displayObject:AddComponent(typeof(BoxCollider))
+        end
+    end
+end
+
+-- 获取互动点信息
+function Furniture:interactonPoint()
+    local result = {}
+    local interactionPoint = self._cfg.interaction_point
+	if self._dir == DIR.LEFT_BOTTOM then
+		for i, interactionData in ipairs(interactionPoint) do
+			result[i] = { row = self._row + interactionData.offsetRow, col = self._col + interactionData.offsetCol }
+		end
+	elseif self._dir == DIR.RIGHT_BOTTOM then
+		for i, interactionData in ipairs(interactionPoint) do
+			result[i] = { row = self._row + interactionData.offsetCol, col = self._col + interactionData.offsetRow }
+		end
+	elseif self._dir == DIR.RIGHT_TOP then
+		for i, interactionData in ipairs(interactionPoint) do
+			result[i] = { row = self._row - interactionData.offsetRow, col = self._col - interactionData.offsetCol }
+		end
+	elseif self._dir == DIR.LEFT_TOP then
+		for i, interactionData in ipairs(interactionPoint) do
+			result[i] = { row = self._row - interactionData.offsetCol, col = self._col - interactionData.offsetRow }
+		end
+	end
+	return result
 end
 
 function Furniture:dispose()

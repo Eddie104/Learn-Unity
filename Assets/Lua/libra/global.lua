@@ -2,7 +2,7 @@
 Application        = UnityEngine.Application
 Screen             = UnityEngine.Screen
 -- AudioListener   = UnityEngine.AudioListener
--- BoxCollider     = UnityEngine.BoxCollider
+BoxCollider        = UnityEngine.BoxCollider
 -- CapsuleCollider = UnityEngine.CapsuleCollider
 GameObject         = UnityEngine.GameObject
 SpriteRenderer     = UnityEngine.SpriteRenderer

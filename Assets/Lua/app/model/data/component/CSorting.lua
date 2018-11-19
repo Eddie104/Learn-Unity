@@ -1,6 +1,6 @@
 return function (obj)
     obj._rows, obj._cols = 1, 1
-    obj._zorderType = 1
+    obj._zorderType = 0
     obj._bottomRows, obj._bottomCols = 0, 0
 
     obj.rows = function (self, val)
