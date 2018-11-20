@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1136,640" overflow="scroll" adaptationTest="FitSize">
+  <displayList>
+    <component id="n3_x1oh" name="loginBtn1" src="x1oh5" fileName="Button1.xml" xy="126,391">
+      <relation target="" sidePair="bottom-bottom,left-left"/>
+      <Button page="1"/>
+    </component>
+    <component id="n11_h96c" name="loginBtn2" src="x1oh5" fileName="Button1.xml" xy="693,391">
+      <relation target="" sidePair="bottom-bottom,right-right"/>
+    </component>
+  </displayList>
+</component>

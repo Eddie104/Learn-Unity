@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Client : LuaClient {
 
-    public float devWidth = 960f;
+    public float devWidth = 1136f;
     public float devHeight = 640f;
 
     void Start () {
@@ -22,6 +22,9 @@ public class Client : LuaClient {
         Camera.main.farClipPlane = 20000;
         // 让摄像机位于场景的右上角，这样看到的场景的(0，0)点就在左下角
         Camera.main.transform.position = new Vector3 (devWidth / 2, devHeight / 2, -10000.0f);
+
+
+        //FairyGUI.UIPackage.AddPackage(Application.dataPath + "/FairyGUI/Common");
     }
 
     protected override void Init () {
