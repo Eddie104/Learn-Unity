@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 182856933
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9378251f76894863179af5985a66cdfa
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/temp/Lua/app/model/RoleManager.lua.bytes
+- Assets/temp/Lua/app/model/FurnitureManager.lua.bytes
+- Assets/temp/Lua/app/model/SceneManager.lua.bytes
+Dependencies: []

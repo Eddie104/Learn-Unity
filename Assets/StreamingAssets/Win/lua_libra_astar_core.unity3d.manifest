@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 185411160
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4031a63a391b57d1980d2e306ef5fe0c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/temp/Lua/libra/aStar/core/assert.lua.bytes
+- Assets/temp/Lua/libra/aStar/core/bheap.lua.bytes
+- Assets/temp/Lua/libra/aStar/core/node.lua.bytes
+- Assets/temp/Lua/libra/aStar/core/utils.lua.bytes
+- Assets/temp/Lua/libra/aStar/core/path.lua.bytes
+- Assets/temp/Lua/libra/aStar/core/heuristics.lua.bytes
+Dependencies: []

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="364,400" restrictSize="0,400,0,400" overflow="scroll" adaptationTest="FitSize">
+  <controller name="c1" alias="ttttt" autoRadioGroupDepth="true" exported="true" pages="0,t1,1,t2" selected="0"/>
+  <displayList>
+    <component id="n3_x1oh" name="n3" src="x1oh5" fileName="Button1.xml" xy="-8,269">
+      <Button controller="c1" page="1"/>
+    </component>
+    <image id="n7_x1oh" name="n7" src="x1oh2" fileName="login_loginBtn_down.png" xy="-21,38"/>
+    <graph id="n8_x1oh" name="n8" xy="169,216" size="100,100" type="eclipse" lineSize="0" lineColor="#ffffffff" fillColor="#ffff0000" corner="6">
+      <gearXY controller="c1" pages="0,1" values="169,216|-92,148" tween="true"/>
+      <relation target="" sidePair="center-center"/>
+    </graph>
+    <loader id="n9_x1oh" name="n9" xy="142,13" size="296,106" url="ui://7myqapvmx1oh3" autoSize="true"/>
+    <text id="n10_x1oh" name="n10" xy="48,194" size="113,38" fontSize="30" autoSize="none" strokeColor="#ff0000" text="撒大声地"/>
+  </displayList>
+</component>

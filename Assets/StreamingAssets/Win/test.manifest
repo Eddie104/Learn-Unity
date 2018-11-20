@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 2862130980
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 3c13fb8fea6f8aff4f197141d49c503b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ea5a42e0fd8ea905efa7aa926a3b8944
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Imgs/Floor/floor.png
+- Assets/Imgs/Furniture/002/furni_002.png
+- Assets/Imgs/Role/001/role_001.png
+- Assets/Imgs/Furniture/001/furni_001.png
+Dependencies: []

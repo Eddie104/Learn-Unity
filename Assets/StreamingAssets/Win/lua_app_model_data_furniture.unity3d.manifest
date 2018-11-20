@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 4102770130
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9824f4537bd56670363dea2835581de1
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/temp/Lua/app/model/data/furniture/Furniture.lua.bytes
+Dependencies: []

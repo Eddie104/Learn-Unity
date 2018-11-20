@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 4268427028
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9249df7c54ae3b2c8df00f9dfd772b1e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/temp/Lua/app/model/data/component/CSorting.lua.bytes
+- Assets/temp/Lua/app/model/data/component/CMovable.lua.bytes
+Dependencies: []

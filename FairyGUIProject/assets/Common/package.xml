@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<packageDescription id="7myqapvm">
-  <resources/>
+<packageDescription id="7myqapvm" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="x1oh1" name="Component1.xml" path="/" exported="true"/>
+    <image id="x1oh2" name="login_loginBtn_down.png" path="/"/>
+    <image id="x1oh3" name="login_loginBtn_normal.png" path="/"/>
+    <component id="x1oh5" name="Button1.xml" path="/"/>
+  </resources>
+  <publish name="Common"/>
 </packageDescription>

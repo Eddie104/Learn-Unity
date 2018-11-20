@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 3367671518
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 232c9cfefcace861783a6b510d42b0b2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/temp/Lua/libra/utils/init.lua.bytes
+- Assets/temp/Lua/libra/utils/sort45.lua.bytes
+- Assets/temp/Lua/libra/utils/display45.lua.bytes
+- Assets/temp/Lua/libra/utils/dateTimeUtil.lua.bytes
+- Assets/temp/Lua/libra/utils/QuadTree.lua.bytes
+Dependencies: []
