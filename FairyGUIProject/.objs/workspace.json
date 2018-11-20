@@ -1,4 +1,8 @@
 {
+	"expanded_nodes": [
+		"7myqapvm",
+		"/"
+	],
 	"docs": [
 		"7myqapvm",
 		"x1oh1"
@@ -7,9 +11,5 @@
 	"active_doc": [
 		"7myqapvm",
 		"x1oh1"
-	],
-	"expanded_nodes": [
-		"7myqapvm",
-		"/"
 	]
 }
