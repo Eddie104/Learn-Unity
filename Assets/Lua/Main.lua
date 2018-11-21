@@ -22,8 +22,6 @@ function Main()
 	require("libra.init")
 	logInfo("logic start")
 	spritePool = require("app.utils.spritePool")
-	-- 资源管理器 C#里的, 先加载测试资源
-	resManager:LoadAssetBundle('test')
 
 	-- 角色管理
 	roleManager = require("app.model.RoleManager").new()
@@ -31,8 +29,8 @@ function Main()
 	furnitureManager = require("app.model.FurnitureManager").new()
 	-- 场景管理
 	sceneManager = require("app.model.SceneManager").new()
-	-- TODO 测试，先写死，10是农场
-	sceneManager:init(10)
+	-- TODO 测试，先写死，4是宅时光广场
+	sceneManager:init(4)
 
 	-- update事件监听
 	UpdateBeat:AddListener(UpdateBeat:CreateListener(update, self))

@@ -1565,5 +1565,26 @@ return {
 		sub_type = 1,
 		name = '渔场',
 
+	},
+	{
+		npcData = {
+			
+		},
+		des = '',
+		mapData = 'eJzN2ktyxCAMBNDbsJqFff/LZWo+Gdv81OoWVlFZBGx4AUNs0P7YxWl7JlltJUInFIp92yHl822XlMt31UmEMl9LJxCKfD0dLZT4RjpSKPDNdJSQ9ll0hJD0WXVuIeVDdE4h4UN1LqHb59E5hE6fVwcLXT5GBwodPlYHCWGfQgcIQZ9KZxZCPtbjEAI+RX/BQrNPNZag0OhT9F2vZt7H6saGYanBx+tmozgon/oUuvk86F4x8Wl0lpWkc83Qp9LZ1uLmVQMfb8J8TWHXx/VFXYtT2PGxYyUTNn38s8SkUwsNn+JZlwkrn2YuyoTlmp/D9y8s57w8vo+wHH/P5XsJC2Zb63u6Uvu2jw/RrXz+3uOL6dbN3/f8QHWr1r/v+pLRd2gl4fie2kg3Py4tJFtfqvrLseRuX6P2RP/fmnUb3g/i+muqM75f3aYzv5/epAPe7yN1g1Lg++gGHfh9aat/m5QDOvj7vH3dqNW6/JfD7Z/ahHXuOYdcSR37Q/vlpy9s7YmDzzO9v1b34PweYLbJ9ifRv0rlixCaddL9ces9gE58vmC5B9KR5zNgW447uPOtcB15Phiuo89Xg3XLzqedukXn+27dkvgIQrcgvoTShcfnkLrg+CZaFxofJtAFxtdJdGHxiSJdUHynTBcSHyvUBcQXS3Xy+GyxThzfLtc99j//cQy0',
+		floor = 0,
+		furnitureData = {
+			
+		},
+		id = 12,
+		enterData = 
+		{
+			col = 41,
+			dir = 7,
+			row = 63
+		},
+		sub_type = 1,
+		name = '宅时光广场',
+
 	}
 }

@@ -16,6 +16,10 @@ TextureImporter:
     21300022: role_001_7_hand_02
     21300024: role_001_7_hand_03
     21300026: role_001_7_hand_04
+    21300028: role_001_7_05
+    21300030: role_001_7_04
+    21300032: role_001_3_05
+    21300034: role_001_3_04
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -120,21 +124,41 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: role_001_7_hand_01
+      name: role_001_7_05
       rect:
         serializedVersion: 2
-        x: 100
-        y: 60
-        width: 24
-        height: 24
+        x: 2
+        y: 754
+        width: 38
+        height: 56
       alignment: 0
-      pivot: {x: 112, y: 72}
+      pivot: {x: 21, y: 782}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ca2cf59e281164418bc7b37c838099d4
+      spriteID: 12c35f7fd89024f1293cb540e59be5af
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: role_001_7_hand_01
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 54
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 14, y: 66}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4b45e44a5c0642ec944f6ab9292551d
       vertices: []
       indices: 
       edges: []
@@ -143,18 +167,18 @@ TextureImporter:
       name: role_001_3_hand_04
       rect:
         serializedVersion: 2
-        x: 74
-        y: 86
+        x: 2
+        y: 130
         width: 34
         height: 24
       alignment: 0
-      pivot: {x: 91, y: 98}
+      pivot: {x: 19, y: 142}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c073c9121bca64dfebcbf6b1013a5f46
+      spriteID: 0b1f7a642462d4cd0acc195f21426295
       vertices: []
       indices: 
       edges: []
@@ -164,17 +188,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 84
+        y: 292
         width: 34
         height: 68
       alignment: 0
-      pivot: {x: 19, y: 118}
+      pivot: {x: 19, y: 326}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aa0fcebddc79d45bb834445061dad07b
+      spriteID: a56fab8d029cb4a2cae8407d5aa788e2
       vertices: []
       indices: 
       edges: []
@@ -183,18 +207,18 @@ TextureImporter:
       name: role_001_7_01
       rect:
         serializedVersion: 2
-        x: 76
-        y: 112
+        x: 2
+        y: 434
         width: 34
         height: 70
       alignment: 0
-      pivot: {x: 93, y: 147}
+      pivot: {x: 19, y: 469}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4e1da718ec0d14ffbbc24226fe00abe6
+      spriteID: 54db5f194b4af4452a0fa48f9a25ac0e
       vertices: []
       indices: 
       edges: []
@@ -204,17 +228,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 34
+        y: 28
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 14, y: 46}
+      pivot: {x: 14, y: 40}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 02197f725dcbf4469beaac7d2ca4111f
+      spriteID: 8cc2c4a0fac4a4717b46625477773478
       vertices: []
       indices: 
       edges: []
@@ -223,18 +247,18 @@ TextureImporter:
       name: role_001_3_hand_02
       rect:
         serializedVersion: 2
-        x: 2
-        y: 60
+        x: 22
+        y: 4
         width: 18
         height: 22
       alignment: 0
-      pivot: {x: 11, y: 71}
+      pivot: {x: 31, y: 15}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3862f5edef60f4f47b02d8229b36c0c4
+      spriteID: b1c8d7b85b8784a879bd2f5cc8c9737b
       vertices: []
       indices: 
       edges: []
@@ -243,18 +267,18 @@ TextureImporter:
       name: role_001_3_hand_03
       rect:
         serializedVersion: 2
-        x: 70
-        y: 62
+        x: 2
+        y: 80
         width: 28
         height: 22
       alignment: 0
-      pivot: {x: 84, y: 73}
+      pivot: {x: 16, y: 91}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dc62629d6dca54959a26ce33d2c1a53f
+      spriteID: 373c8a390ea974379ac9ffe1734ed194
       vertices: []
       indices: 
       edges: []
@@ -263,18 +287,18 @@ TextureImporter:
       name: role_001_7_03
       rect:
         serializedVersion: 2
-        x: 76
-        y: 184
+        x: 2
+        y: 506
         width: 34
         height: 70
       alignment: 0
-      pivot: {x: 93, y: 219}
+      pivot: {x: 19, y: 541}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0fbec90c80e4a457fbfb8a0eda0f6b5c
+      spriteID: 5d870bd330086404ea90d6d4602ca982
       vertices: []
       indices: 
       edges: []
@@ -284,17 +308,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 8
+        y: 2
         width: 18
         height: 24
       alignment: 0
-      pivot: {x: 11, y: 20}
+      pivot: {x: 11, y: 14}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c3bbe68f6bf45408d9c316e0d0cef401
+      spriteID: b3fec749b0f8c418b849a12088a3d27e
       vertices: []
       indices: 
       edges: []
@@ -303,18 +327,18 @@ TextureImporter:
       name: role_001_7_hand_03
       rect:
         serializedVersion: 2
-        x: 38
-        y: 84
+        x: 2
+        y: 104
         width: 30
         height: 24
       alignment: 0
-      pivot: {x: 53, y: 96}
+      pivot: {x: 17, y: 116}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 38cba1b49f2bf415caed5bb952a2dbea
+      spriteID: 45d0f626b17e84e5ea222adcdfe82cfe
       vertices: []
       indices: 
       edges: []
@@ -324,17 +348,77 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 228
+        y: 726
         width: 36
         height: 26
       alignment: 0
-      pivot: {x: 20, y: 241}
+      pivot: {x: 20, y: 739}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6470164d8b5aa4dce9a6119b91c630df
+      spriteID: 44625896f88cf4735bbfca98e4880e65
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: role_001_7_04
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 156
+        width: 34
+        height: 64
+      alignment: 0
+      pivot: {x: 19, y: 188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c4497986d4b441f4959bd01f15611c1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: role_001_3_05
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 812
+        width: 40
+        height: 68
+      alignment: 0
+      pivot: {x: 22, y: 846}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cecc8f6229be4f29961a96b869c1a08
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: role_001_3_04
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 222
+        width: 34
+        height: 68
+      alignment: 0
+      pivot: {x: 19, y: 256}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f11b2e77e71742ef8c64669852bda6b
       vertices: []
       indices: 
       edges: []
@@ -343,18 +427,18 @@ TextureImporter:
       name: role_001_3_03
       rect:
         serializedVersion: 2
-        x: 40
-        y: 182
+        x: 2
+        y: 652
         width: 34
         height: 72
       alignment: 0
-      pivot: {x: 57, y: 218}
+      pivot: {x: 19, y: 688}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fe652d53145f94e9da6c4652c3a34e6b
+      spriteID: 8e50af69d6e02495a9045ca2e2dcda2d
       vertices: []
       indices: 
       edges: []
@@ -363,18 +447,18 @@ TextureImporter:
       name: role_001_3_02
       rect:
         serializedVersion: 2
-        x: 38
-        y: 110
+        x: 2
+        y: 362
         width: 34
         height: 70
       alignment: 0
-      pivot: {x: 55, y: 145}
+      pivot: {x: 19, y: 397}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e2a606b21ff2c4608bfd105ae8b9e739
+      spriteID: c90b90bbb260149979082bb9bf5f9d5f
       vertices: []
       indices: 
       edges: []
@@ -384,17 +468,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 154
+        y: 578
         width: 34
         height: 72
       alignment: 0
-      pivot: {x: 19, y: 190}
+      pivot: {x: 19, y: 614}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 991b8da4cdf0046a58447f741e6563cb
+      spriteID: 1d1bb44988a26488cb4f0cf7f01c1334
       vertices: []
       indices: 
       edges: []
