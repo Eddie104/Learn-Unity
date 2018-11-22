@@ -74,7 +74,7 @@
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
-            <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
+            <enum type="AlgorithmSettings::SizeConstraints">AnySize</enum>
             <key>forceSquared</key>
             <false/>
             <key>forceWordAligned</key>
@@ -162,6 +162,10 @@
             <filename>role_001_7_hand_02.png</filename>
             <filename>role_001_7_hand_03.png</filename>
             <filename>role_001_7_hand_04.png</filename>
+            <filename>role_001_3_04.png</filename>
+            <filename>role_001_3_05.png</filename>
+            <filename>role_001_7_04.png</filename>
+            <filename>role_001_7_05.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

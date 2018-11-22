@@ -23,8 +23,8 @@ def mk_dir(path):
 if __name__ == '__main__':
     # 先把下载好的json复制到项目目录下
     # cfg_arr = ['mine.json', 'npc.json', 'suit.json', 'item.json',
-    #         'award.json', 'forest.json', 'publicScene.json', 'vehicle.json', 'terrain.json']
-    cfg_arr = ['scene.json', 'furniture.json']
+    #         'award.json', 'forest.json', 'vehicle.json', 'terrain.json']
+    cfg_arr = ['scene.json', 'furniture.json', 'publicScene.json']
     dir_name = os.path.join(res_root, 'doc', 'config')
     mk_dir(dir_name)
     for cfg in cfg_arr:

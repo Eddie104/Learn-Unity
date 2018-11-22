@@ -1,6 +1,6 @@
 local CELL_OFFSET_Y = CELL_SIZE / 4
 return function (obj)
-    obj._speed         = 1
+    obj._speed         = 3
 	obj._speedPow2     = obj._speed * obj._speed
 	obj._isMoving      = false
 	obj._pathArr       = nil
