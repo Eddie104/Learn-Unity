@@ -11,20 +11,22 @@ public class Client : LuaClient {
     public float devHeight = 640f;
 
     void Start () {
-        float screenHeight = Screen.height;
-        float orthographicSize = Camera.main.orthographicSize;
-        float aspectRatio = Screen.width * 1.0f / Screen.height;
-        float cameraWidth = orthographicSize * 2 * aspectRatio;
-        if (cameraWidth < devWidth) {
-            orthographicSize = devWidth / (2 * aspectRatio);
-            Camera.main.orthographicSize = orthographicSize;
-        }
+        //float screenHeight = Screen.height;
+        //float orthographicSize = Camera.main.orthographicSize;
+        //float aspectRatio = Screen.width * 1.0f / Screen.height;
+        //float cameraWidth = orthographicSize * 2 * aspectRatio;
+        //if (cameraWidth < devWidth) {
+        //    Debug.Log(cameraWidth);
+        //    Debug.Log(devWidth);
+        //    Debug.Log(aspectRatio);
+        //    orthographicSize = devWidth / (2 * aspectRatio);
+        //    Debug.Log(orthographicSize);
+        //    Camera.main.orthographicSize = orthographicSize;
+        //}
+        Camera.main.orthographicSize = Screen.height / 2;
         Camera.main.farClipPlane = 20000;
         // 让摄像机位于场景的右上角，这样看到的场景的(0，0)点就在左下角
         Camera.main.transform.position = new Vector3 (devWidth / 2, devHeight / 2, -10000.0f);
-
-
-        //FairyGUI.UIPackage.AddPackage(Application.dataPath + "/FairyGUI/Common");
     }
 
     protected override void Init () {

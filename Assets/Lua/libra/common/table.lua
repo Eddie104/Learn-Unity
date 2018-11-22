@@ -308,3 +308,27 @@ function table.unique(t, bArray)
     end
     return n
 end
+
+function table.rotate2D(t)
+    --[[
+        {
+            {1, 2},
+            {3, 4},
+            {5, 6}
+        }
+        变成
+        {
+            {2, 4, 6},
+            {1, 3, 5}
+        }
+    ]]
+    local rows, cols = #t, #t[1]
+    local newT = {}
+    for c = 1, cols do
+        newT[c] = {}
+        for r = 1, rows do
+            newT[c][r] = t[r][cols - c + 1]
+        end
+    end
+    return newT
+end

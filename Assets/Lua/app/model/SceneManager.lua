@@ -124,7 +124,9 @@ function SceneManager:createFurniture(type, id, row, col, dir)
         -- 如果占地，需要修改地图信息
 		for c = f:topCol(), f:bottomCol() do
             for r = f:topRow(), f:bottomRow() do
-				self._aStar:setWalkableAt(c + 1, r + 1, 0)
+                if f:isCovered(r - f:row() + 1, c - f:col() + 1) then
+                    self._aStar:setWalkableAt(c + 1, r + 1, 0)
+                end
 			end
 		end
     end
@@ -132,6 +134,15 @@ function SceneManager:createFurniture(type, id, row, col, dir)
     sort45:addItem(f, false)
     return f
 end
+
+-- -- 判断是否点击的是UI，有效应对安卓没有反应的情况，true为UI
+-- function SceneManager:IsPointerOverUIObject() {
+-- 	PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+-- 	eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+-- 	List<RaycastResult> results = new List<RaycastResult>();
+-- 	EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+--     return results.Count > 0;
+-- }
 
 function SceneManager:onUpdate()
     if Input.GetMouseButtonUp(0) then

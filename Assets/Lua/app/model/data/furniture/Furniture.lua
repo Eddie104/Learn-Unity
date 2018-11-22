@@ -82,9 +82,13 @@ function Furniture:type(val)
         self:name(self._cfg.name)
         self._zorderType = self._cfg.zorder_type
         -- 处理底面占地数据
-        local underside = self._cfg.underside
-        self._rows3 = #underside
-		self._cols3 = underside[1] and #underside[1] or 0
+        self._underside3 = self._cfg.underside
+        self._underside5 = table.rotate2D(self._underside3)
+        -- TODO 还要考虑其他两个方向的
+        -- self._underside7
+        -- self._underside1
+        self._rows3 = #self._underside3
+		self._cols3 = self._underside3[1] and #self._underside3[1] or 0
 		self._rows5 = self._cols3
         self._cols5 = self._rows3
         -- 触摸点范围
@@ -111,7 +115,16 @@ function Furniture:type(val)
 end
 
 -- 是否占地
-function Furniture:isCovered()
+function Furniture:isCovered(row, col)
+    if row and col then
+        if self._dir == DIR.LEFT_BOTTOM then
+            return self._underside3[row][col] == 1
+        elseif self._dir == DIR.RIGHT_BOTTOM then
+            return self._underside5[row][col] == 1
+        end
+        -- TODO 还要考虑其他两个方向的
+        return false
+    end
     return self._cfg.is_covered
 end
 
